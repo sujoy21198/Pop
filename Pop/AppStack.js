@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { Text, View } from 'react-native';
 import LanguageScreen from './Pages/LanguageScreen'
 import RegistrationScreen from './Pages/RegistrationScreen'
+import SigninScreen from './Pages/SigninScreen'
 
 const Stack = createStackNavigator();
 
@@ -14,6 +15,7 @@ function AppStack(){
             <Stack.Navigator>
                 <Stack.Screen name="LanguageScreen" component={LanguageScreen}/>
                 <Stack.Screen name="RegistrationScreen" component={RegistrationScreen}/>
+                <Stack.Screen name="SigninScreen" component={SigninScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

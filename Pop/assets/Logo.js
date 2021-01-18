@@ -6,7 +6,7 @@ import {heightToDp,widthToDp} from '../Responsive'
 const Logo = () =>(
     <Image
     source={require('../assets/logo.png')}
-    style={{height:heightToDp("30%"),width:widthToDp("60%")}}
+    style={{height:heightToDp("20%"),width:widthToDp("40%")}}
     />
 )
 
