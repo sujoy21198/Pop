@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View,Image ,TouchableOpacity} from 'react-native'
+import { View, Image, TouchableOpacity } from 'react-native'
 import { Text } from 'native-base'
 import Logo from '../assets/Logo'
 import { widthToDp, heightToDp } from '../Responsive'
@@ -21,21 +21,25 @@ export default class DashBoardScreen extends Component {
         return (
             <View>
                 <View style={{ marginTop: heightToDp("3%"), alignSelf: "center" }}>
-                    <Logo/>
+                    <Logo />
                 </View>
-                <View style={{flexDirection:'row',marginTop: heightToDp("5%")}}>
-                    <View style={{  backgroundColor: "#000", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100, marginLeft: widthToDp("2%") }}>
-                        <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.7%"), marginLeft: widthToDp("2%") }}>NOTIFICATIONS</Text>
-                    </View>
-                    <Text style={{marginTop:heightToDp("2%"),marginLeft:widthToDp("5%")}}>ENGLISH</Text>
-                    <View style={{height: heightToDp("5%"),width: 1,backgroundColor: '#909090',marginTop:heightToDp("1%"),marginLeft:widthToDp("1%")}}></View>
-                    <Text style={{marginTop:heightToDp("2%"),marginLeft:widthToDp("1%")}}>हिन्दी</Text>
-                    <View style={{height: heightToDp("5%"),width: 1,backgroundColor: '#909090',marginTop:heightToDp("1%"),marginLeft:widthToDp("1%")}}></View>
-                    <Text style={{marginTop:heightToDp("2%"),marginLeft:widthToDp("1%")}}>ʤʌgʌr</Text>
-                    <View style={{height: heightToDp("5%"),width: 1,backgroundColor: '#909090',marginTop:heightToDp("1%"),marginLeft:widthToDp("1%")}}></View>
-                    <Text style={{marginTop:heightToDp("2%"),marginLeft:widthToDp("1%")}}>ଓଡ଼ିଆ</Text>
-                    <View style={{height: heightToDp("5%"),width: 1,backgroundColor: '#909090',marginTop:heightToDp("1%"),marginLeft:widthToDp("1%")}}></View>
-                    <Text style={{marginTop:heightToDp("2%"),marginLeft:widthToDp("1%")}}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
+                <View style={{ flexDirection: 'row', marginTop: heightToDp("5%") }}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationsScreen')}>
+                        <View style={{ backgroundColor: "#000", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100, marginLeft: widthToDp("2%") }}>
+
+                            <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.7%"), marginLeft: widthToDp("2%") }}>NOTIFICATIONS</Text>
+
+                        </View>
+                    </TouchableOpacity>
+                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("5%") }}>ENGLISH</Text>
+                    <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
+                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>हिन्दी</Text>
+                    <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
+                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>ʤʌgʌr</Text>
+                    <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
+                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>ଓଡ଼ିଆ</Text>
+                    <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
+                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
                 </View>
                 {/* <Image
                 style={{width:30,height:30}}
@@ -50,13 +54,13 @@ export default class DashBoardScreen extends Component {
                         bouncesZoom={true}
                         renderItem={({ item }) => (
                             <TouchableOpacity>
-                                <View style={{ backgroundColor: 'white', width: widthToDp("46%"), height: heightToDp("30%"), elevation: 10,borderRadius:10 }}>
-                                    <View style={{backgroundColor:"#000",height:heightToDp("7%"),borderRadius:10}}>
-                                        <Text style={{color:"#fff",fontSize:widthToDp("5%"),marginLeft:widthToDp("5%"),marginTop:heightToDp("1.8%")}}>{item.name}</Text>
+                                <View style={{ backgroundColor: 'white', width: widthToDp("46%"), height: heightToDp("30%"), elevation: 10, borderRadius: 10 }}>
+                                    <View style={{ backgroundColor: "#000", height: heightToDp("7%"), borderRadius: 10 }}>
+                                        <Text style={{ color: "#fff", fontSize: widthToDp("5%"), marginLeft: widthToDp("5%"), marginTop: heightToDp("1.8%") }}>{item.name}</Text>
                                     </View>
                                     <Image
-                                    style={{width:widthToDp("46%"),height:heightToDp("22.5%")}}
-                                    source={{uri:item.code}}
+                                        style={{ width: widthToDp("46%"), height: heightToDp("22.5%") }}
+                                        source={{ uri: item.code }}
                                     />
                                 </View>
                             </TouchableOpacity>
