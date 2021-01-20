@@ -55,7 +55,7 @@ export default class SigninScreen extends Component {
                 <View style={{ marginLeft: widthToDp("56%"), marginTop: heightToDp("2%") }}>
                     <Text>FORGOT PASSWORD</Text>
                 </View>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationsScreen')}>
                     <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("5%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
                         <Text style={{ alignSelf: 'center', marginTop: heightToDp("1%"), fontWeight: '500', fontSize: widthToDp("5%") }}>SIGN IN</Text>
                     </View>
