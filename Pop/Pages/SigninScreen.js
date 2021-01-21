@@ -11,8 +11,8 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
 export default class SigninScreen extends Component {
     render() {
         return (
-            <KeyboardAwareScrollView>
-            <View>
+            <KeyboardAwareScrollView style={{backgroundColor:BaseColor.BackgroundColor,flex:1}}>
+            <View >
                 <View style={{ marginTop: heightToDp("3%"), alignSelf: "center" }}>
                     <Logo />
                 </View>

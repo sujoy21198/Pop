@@ -1,5 +1,5 @@
 const BaseColor = {
-    BackgroundColor: '#202028',
+    BackgroundColor: '#4ba800',
     SecondaryColor: '#f3c99f',
     OrdinaryTextColor: '#fff'
 }

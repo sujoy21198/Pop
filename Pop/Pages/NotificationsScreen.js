@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity } from 'react-native'
+import BaseColor from '../Core/BaseTheme'
 import { Text } from 'native-base'
 import Logo from '../assets/Logo'
 import { heightToDp, widthToDp } from '../Responsive'
@@ -33,7 +34,7 @@ export default class NotificationScreen extends Component {
 
     render() {
         return (
-            <View>
+            <View style={{backgroundColor:BaseColor.BackgroundColor}}>
                 <View style={{ marginTop: heightToDp("3%"), alignSelf: 'center' }}>
                     <Logo />
                 </View>

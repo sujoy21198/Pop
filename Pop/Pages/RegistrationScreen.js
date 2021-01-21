@@ -214,7 +214,7 @@ export default class RegistrationScreen extends Component {
 
   render() {
     return (
-      <View>
+      <View style={{backgroundColor:BaseColor.BackgroundColor,flex:1}}>
         <View style={{ marginTop: heightToDp("3%"), alignSelf: "center" }}>
           <Logo />
         </View>

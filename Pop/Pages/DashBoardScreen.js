@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { View, Image, TouchableOpacity } from 'react-native'
+import BaseColor from '../Core/BaseTheme'
 import { Text } from 'native-base'
 import Logo from '../assets/Logo'
 import { widthToDp, heightToDp } from '../Responsive'
@@ -19,7 +20,7 @@ const data = [
 export default class DashBoardScreen extends Component {
     render() {
         return (
-            <View>
+            <View style={{backgroundColor:BaseColor.BackgroundColor}}>
                 <View style={{ marginTop: heightToDp("3%"), alignSelf: "center" }}>
                     <Logo />
                 </View>
