@@ -105,21 +105,21 @@ export default class LandTypeScreen extends Component {
                         data={data}
                         style={{marginBottom:heightToDp("74%")}}
                         renderItem={({ item }) => 
-                        <TouchableOpacity>
-                            <Card style={{width:widthToDp("90%"),alignSelf:'center',height:heightToDp("30%"),marginBottom:heightToDp("1%"),borderRadius:20,backgroundColor:'red'}}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('AnalysisScreen')}>
+                            <Card style={{width:widthToDp("90%"),alignSelf:'center',height:heightToDp("30%"),marginBottom:heightToDp("1%"),borderRadius:20,backgroundColor:BaseColor.Red}}>
                                 <View style={{flexDirection:'row'}}>
                                     <View style={{width:widthToDp("45%")}}>
-                                    <Text style={{color:'white',marginLeft:widthToDp("6%"),marginTop:heightToDp("2%"),fontSize:widthToDp("7%")}}>{item.name}</Text>
+                                    <Text style={{color:'white',marginLeft:widthToDp("6%"),marginTop:heightToDp("1%"),fontSize:widthToDp("7%")}}>{item.name}</Text>
                                     </View>
                                 <Icon
                                 name="microphone"
-                                size={30}
+                                size={23}
                                 style={{color:'white',marginTop:heightToDp("2%"),marginLeft:widthToDp("36%")}}
                                 />
                                 </View>
                                 
                                 <Image
-                                style={{ width: widthToDp("89%"), height: heightToDp("22.5%"),marginLeft:widthToDp("0.4%"),borderRadius:2 }}
+                                style={{ width: widthToDp("89%"), height: heightToDp("22.5%"),marginLeft:widthToDp("0.4%"),borderRadius:2,marginTop:heightToDp("2%") }}
                                 source={{ uri: item.code }}
                                 />
                             </Card>

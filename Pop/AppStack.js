@@ -12,6 +12,8 @@ import NotificationDetailsScreen from './Pages/NotificationDetailsScreen'
 import KnowledgeCenterScreen from './Pages/KnowledgeCenterScreen'
 import CropsScreen from './Pages/CropsScreen'
 import LandTypeScreen from './Pages/LandTypeScreen'
+import AnalysisScreen from './Pages/AnalysisScreen'
+import StepOneScreen from './Pages/StepOneScreen'
 
 const Stack = createStackNavigator();
 
@@ -28,6 +30,8 @@ function AppStack(){
                 <Stack.Screen name="KnowledgeCenterScreen" component={KnowledgeCenterScreen}/>
                 <Stack.Screen name="CropsScreen" component={CropsScreen}/>
                 <Stack.Screen name="LandTypeScreen" component={LandTypeScreen}/>
+                <Stack.Screen name="AnalysisScreen" component={AnalysisScreen}/>
+                <Stack.Screen name="StepOneScreen" component={StepOneScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
