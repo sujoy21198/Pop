@@ -89,7 +89,7 @@ export default class DashBoardScreen extends Component {
                         data={data}
                         bouncesZoom={true}
                         renderItem={({ item }) => (
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('KnowledgeCenterScreen')}>
                                 <View style={{ backgroundColor: 'white', width: widthToDp("46%"), height: heightToDp("30%"), elevation: 10, borderRadius: 10 }}>
                                     <View style={{ backgroundColor: "#000", height: heightToDp("7%"), borderRadius: 10 }}>
                                         <Text style={{ color: "#fff", fontSize: widthToDp("5%"), marginLeft: widthToDp("5%"), marginTop: heightToDp("1.8%") }}>{item.name}</Text>

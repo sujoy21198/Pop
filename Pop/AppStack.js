@@ -9,6 +9,9 @@ import SigninScreen from './Pages/SigninScreen'
 import DashBoardScreen from './Pages/DashBoardScreen'
 import NotificationsScreen from './Pages/NotificationsScreen'
 import NotificationDetailsScreen from './Pages/NotificationDetailsScreen'
+import KnowledgeCenterScreen from './Pages/KnowledgeCenterScreen'
+import CropsScreen from './Pages/CropsScreen'
+import LandTypeScreen from './Pages/LandTypeScreen'
 
 const Stack = createStackNavigator();
 
@@ -22,6 +25,9 @@ function AppStack(){
                 <Stack.Screen name="DashBoardScreen" component={DashBoardScreen}/>
                 <Stack.Screen name="NotificationsScreen" component={NotificationsScreen}/>
                 <Stack.Screen name="NotificationDetailsScreen" component={NotificationDetailsScreen}/>
+                <Stack.Screen name="KnowledgeCenterScreen" component={KnowledgeCenterScreen}/>
+                <Stack.Screen name="CropsScreen" component={CropsScreen}/>
+                <Stack.Screen name="LandTypeScreen" component={LandTypeScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
