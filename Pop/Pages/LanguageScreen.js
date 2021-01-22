@@ -27,10 +27,10 @@ export default class LanguageScreen extends Component {
                 <View style={{ marginTop: heightToDp("3%"), alignSelf: "center" }}>
                     <Logo />
                 </View>
-                <View style={{ backgroundColor: '#fff', height: heightToDp("43%"), width: widthToDp("90%"), marginLeft: widthToDp("5%"), marginTop: heightToDp("5%"), borderRadius: 20 }}>
+                <View style={{ backgroundColor: '#fff', height: heightToDp("43%"), width: widthToDp("90%"), marginLeft: widthToDp("5%"), marginTop: heightToDp("5%"), borderRadius: 20,elevation:10 }}>
                     <Text style={{ marginTop: heightToDp("4%"), alignSelf: 'center', fontWeight: 'bold', fontSize: widthToDp("6%") }}>SELECT LANGUAGE</Text>
                     <View style={{ flexDirection: 'row', marginTop: heightToDp("5%") }}>
-                        <TouchableOpacity onPress={() => this.props.navigation.navigate('RegistrationScreen')}>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("30%"), height: heightToDp("6%"), marginLeft: widthToDp("10%"), borderRadius: 100 }}>
                             <Text style={{ color: '#fff', marginTop: heightToDp("1.5%"), alignSelf: 'center' }}>ENGLISH</Text>
                         </View>

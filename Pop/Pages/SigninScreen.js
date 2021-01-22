@@ -19,7 +19,7 @@ export default class SigninScreen extends Component {
                 <View style={{ marginTop: heightToDp("5%") }}>
                     <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center' }}>SIGN IN</Text>
                 </View>
-                <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("10%") }}>
+                <View style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("10%") }}>
                     <FloatingLabel
                         labelStyle={styles.labelInput}
                         inputStyle={styles.input}
@@ -58,6 +58,20 @@ export default class SigninScreen extends Component {
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DashBoardScreen')}>
                     <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("5%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
                         <Text style={{ alignSelf: 'center', marginTop: heightToDp("1%"), fontWeight: '500', fontSize: widthToDp("5%") }}>SIGN IN</Text>
+                    </View>
+                </TouchableOpacity>
+                <View style={{flexDirection:'row',alignSelf:'center',marginTop:heightToDp('2%')}}>
+                    <Text>You don't have an account?</Text>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('RegistrationScreen')}>
+                    <Text style={{color:'red',fontWeight:'bold'}}>Please Sign up</Text>
+                    </TouchableOpacity>
+                </View>
+
+                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%")}}></View>
+
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('DashBoardScreen')}>
+                    <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("3%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
+                        <Text style={{ alignSelf: 'center', marginTop: heightToDp("1%"), fontWeight: '500', fontSize: widthToDp("5%") }}>GUEST SIGN IN</Text>
                     </View>
                 </TouchableOpacity>
             </View>

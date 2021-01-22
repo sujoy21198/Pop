@@ -8,6 +8,7 @@ import RegistrationScreen from './Pages/RegistrationScreen'
 import SigninScreen from './Pages/SigninScreen'
 import DashBoardScreen from './Pages/DashBoardScreen'
 import NotificationsScreen from './Pages/NotificationsScreen'
+import NotificationDetailsScreen from './Pages/NotificationDetailsScreen'
 
 const Stack = createStackNavigator();
 
@@ -20,6 +21,7 @@ function AppStack(){
                 <Stack.Screen name="SigninScreen" component={SigninScreen}/>
                 <Stack.Screen name="DashBoardScreen" component={DashBoardScreen}/>
                 <Stack.Screen name="NotificationsScreen" component={NotificationsScreen}/>
+                <Stack.Screen name="NotificationDetailsScreen" component={NotificationDetailsScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

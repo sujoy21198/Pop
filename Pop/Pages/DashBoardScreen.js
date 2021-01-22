@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { View, Image, TouchableOpacity } from 'react-native'
 import BaseColor from '../Core/BaseTheme'
 import { Text } from 'native-base'
-import Logo from '../assets/Logo'
+import TopLogo from '../assets/TopLogo'
 import { widthToDp, heightToDp } from '../Responsive'
 import { FlatGrid, SectionGrid } from 'react-native-super-grid'
 
@@ -20,18 +20,53 @@ const data = [
 export default class DashBoardScreen extends Component {
     render() {
         return (
-            <View style={{backgroundColor:BaseColor.BackgroundColor}}>
-                <View style={{ marginTop: heightToDp("3%"), alignSelf: "center" }}>
-                    <Logo />
+            <View style={{ backgroundColor: BaseColor.BackgroundColor }}>
+                <View style={{ backgroundColor: 'white', width: widthToDp("100%"), height: heightToDp("13%") }}>
+                    <View style={{ marginTop: heightToDp("4%"), marginLeft: widthToDp("3%") }}>
+                        <TopLogo />
+                    </View>
                 </View>
-                <View style={{ flexDirection: 'row', marginTop: heightToDp("5%") }}>
+
+                <View style={{ alignSelf: 'center', marginTop: heightToDp("2%") }}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationsScreen')}>
-                        <View style={{ backgroundColor: "#000", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100, marginLeft: widthToDp("2%") }}>
+                        <View style={{ backgroundColor: "#000", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100 }}>
 
                             <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.7%"), marginLeft: widthToDp("2%") }}>NOTIFICATIONS</Text>
 
                         </View>
                     </TouchableOpacity>
+                </View>
+                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
+                <View style={{ flexDirection: 'row',marginTop:heightToDp("1%"),alignSelf:'center' }}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
+                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ENGLISH</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
+                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>हिन्दी</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
+                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ʤʌgʌr</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
+                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ଓଡ଼ିଆ</Text>
+                        </View>
+                    </TouchableOpacity>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
+                        <View style={{ backgroundColor: 'blue', width: widthToDp("17%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
+                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
+                {/* <View style={{ flexDirection: 'row', marginTop: heightToDp("5%") }}>
+                    
                     <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("5%") }}>ENGLISH</Text>
                     <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
                     <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>हिन्दी</Text>
@@ -41,14 +76,14 @@ export default class DashBoardScreen extends Component {
                     <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>ଓଡ଼ିଆ</Text>
                     <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
                     <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
-                </View>
+                </View> */}
                 {/* <Image
                 style={{width:30,height:30}}
                 source={{uri:'https://upload.wikimedia.org/wikipedia/commons/4/48/Basketball.jpeg'}}
                 /> */}
                 <View>
                     <FlatGrid
-                        style={{ marginTop: heightToDp("2%"), marginBottom: heightToDp("70%") }}
+                        style={{ marginTop: heightToDp("2%"), marginBottom: heightToDp("65%") }}
                         bounces={true}
                         itemDimension={130}
                         data={data}

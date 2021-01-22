@@ -405,11 +405,13 @@ export default class RegistrationScreen extends Component {
           </TouchableOpacity>
           <View style={{flexDirection:'row',marginTop:heightToDp("4%"),alignSelf:'center'}}>
           <Text style={{color:"#fff"}}>You have an account?</Text>
+          <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
           <Text style={{color:BaseColor.SecondaryColor}}>Sign in</Text>
+          </TouchableOpacity>
           </View>
 
 
-          <View style={{ marginTop: heightToDp("50%") }}></View>
+          <View style={{ marginTop: heightToDp("10%") }}></View>
         </ScrollView>
       </View>
     );

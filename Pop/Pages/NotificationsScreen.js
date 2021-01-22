@@ -3,6 +3,7 @@ import { View, TouchableOpacity } from 'react-native'
 import BaseColor from '../Core/BaseTheme'
 import { Text } from 'native-base'
 import Logo from '../assets/Logo'
+import TopLogo from '../assets/TopLogo'
 import { heightToDp, widthToDp } from '../Responsive'
 import { FlatGrid, SectionGrid } from 'react-native-super-grid'
 import Icon from 'react-native-vector-icons/AntDesign'
@@ -35,21 +36,23 @@ export default class NotificationScreen extends Component {
     render() {
         return (
             <View style={{backgroundColor:BaseColor.BackgroundColor}}>
-                <View style={{ marginTop: heightToDp("3%"), alignSelf: 'center' }}>
-                    <Logo />
+                <View style={{backgroundColor:'white',width:widthToDp("100%"),height:heightToDp("13%")}}>
+                    <View style={{marginTop:heightToDp("4%"),marginLeft:widthToDp("3%")}}>
+                    <TopLogo />
+                    </View>
                 </View>
                 <View style={{ marginTop: heightToDp("5%") }}>
                     <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center' }}>NOTIFICATIONS</Text>
                 </View>
                 <View>
                     <FlatGrid
-                        style={{ marginTop: heightToDp("2%"), marginBottom: heightToDp("70%") }}
+                        style={{ marginTop: heightToDp("2%"), marginBottom: heightToDp("50%") }}
                         bounces={true}
                         itemDimension={130}
                         data={data}
                         bouncesZoom={true}
                         renderItem={({ item }) => (
-                            <TouchableOpacity>
+                            <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationDetailsScreen')}>
                                 <View style={{ backgroundColor: 'white', width: widthToDp("45%"), height: heightToDp("30%"), elevation: 10 }}>
                                     <Text style={{ marginLeft: widthToDp("1%") }}>From: Admin</Text>
                                     <Text style={{ marginLeft: widthToDp("1%"), fontSize: widthToDp("5%"), fontWeight: 'bold' }}>{item.name}</Text>
