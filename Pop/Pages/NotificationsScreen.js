@@ -42,7 +42,7 @@ export default class NotificationScreen extends Component {
                     </View>
                 </View>
                 <View style={{ marginTop: heightToDp("5%") }}>
-                    <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center' }}>NOTIFICATIONS</Text>
+                    <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center',fontFamily:'Oswald-SemiBold' }}>NOTIFICATIONS</Text>
                 </View>
                 <View>
                     <FlatGrid
@@ -54,24 +54,24 @@ export default class NotificationScreen extends Component {
                         renderItem={({ item }) => (
                             <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationDetailsScreen')}>
                                 <View style={{ backgroundColor: 'white', width: widthToDp("45%"), height: heightToDp("30%"), elevation: 10 }}>
-                                    <Text style={{ marginLeft: widthToDp("1%") }}>From: Admin</Text>
-                                    <Text style={{ marginLeft: widthToDp("1%"), fontSize: widthToDp("5%"), fontWeight: 'bold' }}>{item.name}</Text>
+                                    <Text style={{ marginLeft: widthToDp("1%") ,fontFamily:'Oswald-Light'}}>From: Admin</Text>
+                                    <Text style={{ marginLeft: widthToDp("1%"), fontSize: widthToDp("5%"),fontFamily:'Oswald-Medium' }}>{item.name}</Text>
                                     <View style={{ marginLeft: widthToDp("1%"), height: heightToDp("18%") }}>
-                                        <Text>this is the body of notification multiline text which will be filled with notification</Text>
+                                        <Text style={{fontFamily:'Oswald-Light',fontSize:widthToDp("5%")}}>this is the body of notification multiline text which will be filled with notification</Text>
                                     </View>
                                     <View style={{ flexDirection: 'row', marginLeft: widthToDp("2%") }}>
                                         <Icon
                                             name="calendar"
                                             size={15}
                                         />
-                                        <Text style={{ marginLeft: widthToDp("2%") }}>12-01-2021</Text>
+                                        <Text style={{ marginLeft: widthToDp("2%"),fontFamily:'Oswald-Light' }}>12-01-2021</Text>
                                     </View>
                                     <View style={{ flexDirection: 'row', marginLeft: widthToDp("2%") }}>
                                         <Icon
                                             name="clockcircleo"
                                             size={15}
                                         />
-                                        <Text style={{ marginLeft: widthToDp("2%") }}>10:12 AM</Text>
+                                        <Text style={{ marginLeft: widthToDp("2%"),fontFamily:'Oswald-Light' }}>10:12 AM</Text>
                                     </View>
                                 </View>
                             </TouchableOpacity>
