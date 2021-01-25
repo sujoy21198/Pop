@@ -14,6 +14,13 @@ import CropsScreen from './Pages/CropsScreen'
 import LandTypeScreen from './Pages/LandTypeScreen'
 import AnalysisScreen from './Pages/AnalysisScreen'
 import StepOneScreen from './Pages/StepOneScreen'
+import StepTwoScreen from './Pages/StepTwoScreen'
+import StepThreeScreen from './Pages/StepThreeScreen'
+import StepFourScreen from './Pages/StepFourScreen'
+import StepFiveScreen from './Pages/StepFiveScreen'
+import StepSixScreen from './Pages/StepSixScreen'
+import StepSevenScreen from './Pages/StepSevenScreen'
+import StepEightScreen from './Pages/StepEightScreen'
 
 const Stack = createStackNavigator();
 
@@ -32,6 +39,13 @@ function AppStack(){
                 <Stack.Screen name="LandTypeScreen" component={LandTypeScreen}/>
                 <Stack.Screen name="AnalysisScreen" component={AnalysisScreen}/>
                 <Stack.Screen name="StepOneScreen" component={StepOneScreen}/>
+                <Stack.Screen name="StepTwoScreen" component={StepTwoScreen}/>
+                <Stack.Screen name="StepThreeScreen" component={StepThreeScreen}/>
+                <Stack.Screen name="StepFourScreen" component={StepFourScreen}/>
+                <Stack.Screen name="StepFiveScreen" component={StepFiveScreen}/>
+                <Stack.Screen name="StepSixScreen" component={StepSixScreen}/>
+                <Stack.Screen name="StepSevenScreen" component={StepSevenScreen}/>
+                <Stack.Screen name="StepEightScreen" component={StepEightScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );
