@@ -29,7 +29,7 @@ export default class StepOneScreen extends Component {
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationsScreen')}>
                         <View style={{ backgroundColor: "#000", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100 }}>
 
-                            <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.7%"), marginLeft: widthToDp("2%") }}>NOTIFICATIONS</Text>
+                            <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.4%"), alignSelf:'center',fontFamily:'Oswald-Medium' }}>NOTIFICATIONS</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -38,36 +38,36 @@ export default class StepOneScreen extends Component {
                 <View style={{ flexDirection: 'row', marginTop: heightToDp("1%"), alignSelf: 'center' }}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ENGLISH</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ENGLISH</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>हिन्दी</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>हिन्दी</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ʤʌgʌr</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("0.6%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ʤʌgʌr</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ଓଡ଼ିଆ</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' ,fontFamily:'Oswald-Medium'}}>ଓଡ଼ିଆ</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("17%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
                 <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
-                <Text style={{fontSize:widthToDp("6%"),fontWeight:'bold',marginLeft:widthToDp("3%"),marginTop:heightToDp("1%")}}>STEP - 01/08</Text>
+                <Text style={{fontSize:widthToDp("6%"),marginLeft:widthToDp("3%"),marginTop:heightToDp("1%"),fontFamily:'Oswald-Medium'}}>STEP - 01/08</Text>
                 <ScrollView>
                     <View style={{ backgroundColor: BaseColor.Red, width: widthToDp("90%"), height: heightToDp("26%"), alignSelf: 'center', marginTop: heightToDp("2%"), borderRadius: 10 }}>
-                        <Text style={{ color: 'white', marginLeft: widthToDp("4%"), marginTop: heightToDp('1.5%'), fontSize: widthToDp("5%") }}>PLOUGHING OF LAND</Text>
-                        <View style={{ backgroundColor: 'white', width: widthToDp("90%"), height: heightToDp("20%"), borderBottomLeftRadius: 10, borderBottomRightRadius: 10, marginTop: heightToDp("2%") }}>
+                        <Text style={{ color: 'white', marginLeft: widthToDp("4%"), marginTop: heightToDp('1.5%'), fontSize: widthToDp("5%"),fontFamily:'Oswald-Medium' }}>PLOUGHING OF LAND</Text>
+                        <View style={{ backgroundColor: 'white', width: widthToDp("90%"), height: heightToDp("20%"), borderBottomLeftRadius: 10, borderBottomRightRadius: 10, marginTop: heightToDp("1%") }}>
                             <View>
                                 <Image
                                     style={{ height: heightToDp("20%"), width: widthToDp("90%"), borderBottomLeftRadius: 10, borderBottomRightRadius:10 }}
@@ -79,20 +79,20 @@ export default class StepOneScreen extends Component {
 
 
                     <View style={{ backgroundColor: BaseColor.Red, width: widthToDp("90%"), height: heightToDp("13%"), alignSelf: 'center', marginTop: heightToDp("2%"), borderRadius: 10 }}>
-                        <Text style={{ color: 'white', marginLeft: widthToDp("4%"), marginTop: heightToDp('1.5%'), fontSize: widthToDp("5%") }}>DESCRIPTION</Text>
+                        <Text style={{ color: 'white', marginLeft: widthToDp("4%"), marginTop: heightToDp('1.5%'), fontSize: widthToDp("5%"),fontFamily:'Oswald-Medium' }}>DESCRIPTION</Text>
                         <View style={{ backgroundColor: 'white', width: widthToDp("90%"), height: heightToDp("7%"), borderBottomLeftRadius: 10, borderBottomRightRadius: 10, marginTop: heightToDp("2%") }}>
-                            <Text style={{marginLeft:widthToDp("2%"),marginTop:heightToDp("1%")}}>Plough land 2-3 times for main field preparation</Text>
+                            <Text style={{marginLeft:widthToDp("2%"),marginTop:heightToDp("1%"),fontFamily:'Oswald-Light'}}>Plough land 2-3 times for main field preparation</Text>
                         </View>
                     </View>
 
 
                     <View style={{ backgroundColor: BaseColor.Red, width: widthToDp("90%"), height: heightToDp("30%"), alignSelf: 'center', marginTop: heightToDp("2%"), borderRadius: 10 }}>
-                        <Text style={{ color: 'white', marginLeft: widthToDp("4%"), marginTop: heightToDp('1.5%'), fontSize: widthToDp("5%") }}>SELECTED ITEM</Text>
+                        <Text style={{ color: 'white', marginLeft: widthToDp("4%"), marginTop: heightToDp('1.5%'), fontSize: widthToDp("5%") ,fontFamily:'Oswald-Medium'}}>SELECTED ITEM</Text>
                         <View style={{ backgroundColor: 'white', width: widthToDp("90%"), height: heightToDp("23.5%"), borderBottomLeftRadius: 10, borderBottomRightRadius: 10, marginTop: heightToDp("2%") }}>
                             <View style={{flexDirection:'row'}}>
                                 <View style={{marginTop:heightToDp("1%"),marginLeft:widthToDp("2%")}}>
-                                    <Text style={{fontSize:widthToDp("4%")}}>Ploughing Type</Text>
-                                    <Text style={{fontSize:widthToDp("5%")}}>Bitter Gourd</Text>
+                                    <Text style={{fontSize:widthToDp("4%"),fontFamily:'Oswald-Medium'}}>Ploughing Type</Text>
+                                    <Text style={{fontSize:widthToDp("5%"),fontFamily:'Oswald-Light'}}>Bitter Gourd</Text>
                                 </View>
                                 <Image
                                     style={{ height: heightToDp("20%"), width: widthToDp("50%"), marginTop: heightToDp("2%"), marginLeft: widthToDp("7%"), borderRadius: 10 }}
@@ -104,15 +104,15 @@ export default class StepOneScreen extends Component {
 
 
                     <View style={{ backgroundColor: BaseColor.Red, width: widthToDp("90%"), height: heightToDp("20%"), alignSelf: 'center', marginTop: heightToDp("2%"), borderRadius: 10 }}>
-                        <Text style={{ color: 'white', marginLeft: widthToDp("4%"), marginTop: heightToDp('1.5%'), fontSize: widthToDp("5%") }}>MATERIAL NEEDED</Text>
+                        <Text style={{ color: 'white', marginLeft: widthToDp("4%"), marginTop: heightToDp('1.5%'), fontSize: widthToDp("5%"),fontFamily:'Oswald-Medium' }}>MATERIAL NEEDED</Text>
                         <View style={{ backgroundColor: 'white', width: widthToDp("90%"), height: heightToDp("17%"), borderBottomLeftRadius: 10, borderBottomRightRadius: 10, marginTop: heightToDp("2%") }}>
                             <View style={{flexDirection:'row',marginLeft:widthToDp("3%"),marginTop:heightToDp("2%")}}>
-                                <Text style={{color:BaseColor.Red,fontWeight:'bold'}}>Description</Text>
-                                <Text style={{color:BaseColor.Red,fontWeight:'bold',marginLeft:widthToDp("50%")}}>Amount</Text>
+                                <Text style={{color:BaseColor.Red,fontFamily:'Oswald-Medium'}}>Description</Text>
+                                <Text style={{color:BaseColor.Red,fontFamily:'Oswald-Medium',marginLeft:widthToDp("50%")}}>Amount</Text>
                             </View>
                             <View style={{flexDirection:'row',marginLeft:widthToDp("3%"),marginTop:heightToDp("2%")}}>
-                                <Text style={{fontWeight:'bold'}}>Ploughing with oxen</Text>
-                                <Text style={{fontWeight:'bold',marginLeft:widthToDp("36%")}}>Amount</Text>
+                                <Text style={{fontFamily:'Oswald-Medium'}}>Ploughing with oxen</Text>
+                                <Text style={{marginLeft:widthToDp("38%"),fontFamily:'Oswald-Medium'}}>Amount</Text>
                             </View>
                         </View>
                     </View>
@@ -122,7 +122,7 @@ export default class StepOneScreen extends Component {
                 <View style={{ height: heightToDp("10%") }}>
                         <TouchableOpacity>
                             <View style={{ backgroundColor: "#fff", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100, alignSelf:'center', marginTop: heightToDp("2%") }}>
-                                <Text style={{ fontSize: widthToDp("4%"), color: "#000", marginTop: heightToDp("1.7%"), alignSelf: 'center' }}>NEXT</Text>
+                                <Text style={{ fontSize: widthToDp("4%"), color: "#000", marginTop: heightToDp("1.7%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>NEXT</Text>
                             </View>
                         </TouchableOpacity>
                 </View>

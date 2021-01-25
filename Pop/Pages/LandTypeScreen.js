@@ -29,7 +29,7 @@ export default class LandTypeScreen extends Component {
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationsScreen')}>
                         <View style={{ backgroundColor: "#000", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100 }}>
 
-                            <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.7%"), marginLeft: widthToDp("2%") }}>NOTIFICATIONS</Text>
+                            <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.4%"), alignSelf:'center',fontFamily:'Oswald-Medium' }}>NOTIFICATIONS</Text>
 
                         </View>
                     </TouchableOpacity>
@@ -38,32 +38,32 @@ export default class LandTypeScreen extends Component {
                 <View style={{ flexDirection: 'row', marginTop: heightToDp("1%"), alignSelf: 'center' }}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ENGLISH</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ENGLISH</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>हिन्दी</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>हिन्दी</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ʤʌgʌr</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("0.6%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ʤʌgʌr</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ଓଡ଼ିଆ</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ଓଡ଼ିଆ</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: 'blue', width: widthToDp("17%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' ,fontFamily:'Oswald-Medium'}}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
                 <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
-                <Text style={{ marginLeft: widthToDp("3%"), marginTop: heightToDp("2%"), fontSize: widthToDp("7%"), fontWeight: 'bold' }}>LAND TYPE</Text>
+                <Text style={{ marginLeft: widthToDp("3%"), marginTop: heightToDp("2%"), fontSize: widthToDp("7%"), fontFamily:'Oswald-Medium' }}>LAND TYPE</Text>
                 {/* <View style={{ flexDirection: 'row', marginTop: heightToDp("5%") }}>
                     
                     <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("5%") }}>ENGLISH</Text>
@@ -106,10 +106,10 @@ export default class LandTypeScreen extends Component {
                         style={{marginBottom:heightToDp("74%")}}
                         renderItem={({ item }) => 
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('AnalysisScreen')}>
-                            <Card style={{width:widthToDp("90%"),alignSelf:'center',height:heightToDp("30%"),marginBottom:heightToDp("1%"),borderRadius:20,backgroundColor:BaseColor.Red}}>
+                            <Card style={{width:widthToDp("90%"),marginLeft:widthToDp("3%"),height:heightToDp("30%"),marginBottom:heightToDp("1%"),borderRadius:20,backgroundColor:BaseColor.Red}}>
                                 <View style={{flexDirection:'row'}}>
                                     <View style={{width:widthToDp("45%")}}>
-                                    <Text style={{color:'white',marginLeft:widthToDp("6%"),marginTop:heightToDp("1%"),fontSize:widthToDp("7%")}}>{item.name}</Text>
+                                    <Text style={{color:'white',marginLeft:widthToDp("6%"),marginTop:heightToDp("1%"),fontSize:widthToDp("7%"),fontFamily:'Oswald-Medium'}}>{item.name}</Text>
                                     </View>
                                 <Icon
                                 name="microphone"
@@ -119,7 +119,7 @@ export default class LandTypeScreen extends Component {
                                 </View>
                                 
                                 <Image
-                                style={{ width: widthToDp("89%"), height: heightToDp("22.5%"),marginLeft:widthToDp("0.4%"),borderRadius:2,marginTop:heightToDp("2%") }}
+                                style={{ width: widthToDp("89%"), height: heightToDp("22.8%"),marginLeft:widthToDp("0.4%"),borderRadius:2,marginTop:heightToDp("1%"),borderBottomLeftRadius:20,borderBottomRightRadius:20 }}
                                 source={{ uri: item.code }}
                                 />
                             </Card>
