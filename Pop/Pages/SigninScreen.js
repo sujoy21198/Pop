@@ -17,7 +17,7 @@ export default class SigninScreen extends Component {
                     <Logo />
                 </View>
                 <View style={{ marginTop: heightToDp("5%") }}>
-                    <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center' }}>SIGN IN</Text>
+                    <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center',fontFamily:'Oswald-SemiBold' }}>SIGN IN</Text>
                 </View>
                 <View style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("10%") }}>
                     <FloatingLabel
@@ -52,26 +52,26 @@ export default class SigninScreen extends Component {
                     >PASSWORD</FloatingLabel>
                 </View>
                 {/* <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("80%"), alignSelf: 'center' }}></View> */}
-                <View style={{ marginLeft: widthToDp("56%"), marginTop: heightToDp("2%") }}>
-                    <Text>FORGOT PASSWORD</Text>
+                <View style={{ marginLeft: widthToDp("60.5%"), marginTop: heightToDp("0.5%") }}>
+                    <Text style={{fontFamily:'Oswald-Medium'}}>FORGOT PASSWORD</Text>
                 </View>
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DashBoardScreen')}>
                     <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("5%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
-                        <Text style={{ alignSelf: 'center', marginTop: heightToDp("1%"), fontWeight: '500', fontSize: widthToDp("5%") }}>SIGN IN</Text>
+                        <Text style={{ alignSelf: 'center', marginTop: heightToDp("0.5%"), fontWeight: '500', fontSize: widthToDp("5%"),fontFamily:'Oswald-Medium' }}>SIGN IN</Text>
                     </View>
                 </TouchableOpacity>
-                <View style={{flexDirection:'row',alignSelf:'center',marginTop:heightToDp('2%')}}>
-                    <Text>You don't have an account?</Text>
+                <View style={{flexDirection:'row',alignSelf:'center',marginTop:heightToDp('1.5%')}}>
+                    <Text style={{fontFamily:'Oswald-Medium'}}>You don't have an account?</Text>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('RegistrationScreen')}>
-                    <Text style={{color:'red',fontWeight:'bold'}}>Please Sign up</Text>
+                    <Text style={{color:BaseColor.Red,fontFamily:'Oswald-Medium'}}> Please Sign up</Text>
                     </TouchableOpacity>
                 </View>
 
-                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%")}}></View>
+                <View style={{ borderBottomColor: BaseColor.Stroke, borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%")}}></View>
 
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('DashBoardScreen')}>
                     <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("3%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
-                        <Text style={{ alignSelf: 'center', marginTop: heightToDp("1%"), fontWeight: '500', fontSize: widthToDp("5%") }}>GUEST SIGN IN</Text>
+                        <Text style={{ alignSelf: 'center', marginTop: heightToDp("0.4%"), fontWeight: '500', fontSize: widthToDp("5%"),fontFamily:'Oswald-Medium' }}>GUEST SIGN IN</Text>
                     </View>
                 </TouchableOpacity>
             </View>
@@ -88,7 +88,8 @@ var styles = StyleSheet.create({
     },
     labelInput: {
         color: '#000',
-        fontSize:widthToDp("4.6%")
+        fontSize:widthToDp("4.6%"),
+        fontFamily:'Oswald-Medium'
     },
     formInput: {
         borderBottomWidth: 1.5,
