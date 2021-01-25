@@ -21,6 +21,9 @@ import StepFiveScreen from './Pages/StepFiveScreen'
 import StepSixScreen from './Pages/StepSixScreen'
 import StepSevenScreen from './Pages/StepSevenScreen'
 import StepEightScreen from './Pages/StepEightScreen'
+import ActualCultivationCostScreen from './Pages/ActualCultivationCostScreen'
+import CostBenifitAnalysisScreen from './Pages/CostBenifitAnalysisScreen'
+import LiveStockScreen from './Pages/LiveStockScreen'
 
 const Stack = createStackNavigator();
 
@@ -46,6 +49,9 @@ function AppStack(){
                 <Stack.Screen name="StepSixScreen" component={StepSixScreen}/>
                 <Stack.Screen name="StepSevenScreen" component={StepSevenScreen}/>
                 <Stack.Screen name="StepEightScreen" component={StepEightScreen}/>
+                <Stack.Screen name="ActualCultivationCostScreen" component={ActualCultivationCostScreen}/>
+                <Stack.Screen name="CostBenifitAnalysisScreen" component={CostBenifitAnalysisScreen}/>
+                <Stack.Screen name="LiveStockScreen" component={LiveStockScreen}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

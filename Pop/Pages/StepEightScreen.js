@@ -120,7 +120,7 @@ export default class StepTwoScreen extends Component {
                     <View style={{ marginBottom: heightToDp("10%") }}></View>
                 </ScrollView>
                 <View style={{ height: heightToDp("10%") }}>
-                        <TouchableOpacity>
+                        <TouchableOpacity onPress={() => this.props.navigation.navigate('ActualCultivationCostScreen')}>
                             <View style={{ backgroundColor: "#fff", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100, alignSelf:'center', marginTop: heightToDp("2%") }}>
                                 <Text style={{ fontSize: widthToDp("4%"), color: "#000", marginTop: heightToDp("1.7%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>NEXT</Text>
                             </View>
