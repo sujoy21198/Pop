@@ -31,41 +31,41 @@ export default class KnowledgeCenterScreen extends Component {
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationsScreen')}>
                         <View style={{ backgroundColor: "#000", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100 }}>
 
-                            <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.4%"), alignSelf:'center',fontFamily:'Oswald-Medium' }}>NOTIFICATIONS</Text>
+                            <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.4%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>NOTIFICATIONS</Text>
 
                         </View>
                     </TouchableOpacity>
                 </View>
-                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
-                <View style={{ flexDirection: 'row',marginTop:heightToDp("1%"),marginLeft:widthToDp("1%") }}>
+                <View style={{ borderBottomColor: BaseColor.Stroke, borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
+                <View style={{ flexDirection: 'row', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ENGLISH</Text>
+                        <View style={{ backgroundColor: BaseColor.English, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>ENGLISH</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>हिन्दी</Text>
+                        <View style={{ backgroundColor: BaseColor.Hindi, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>हिन्दी</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("0.6%"), alignSelf: 'center' ,fontFamily:'Oswald-Medium'}}>ʤʌgʌr</Text>
+                        <View style={{ backgroundColor: BaseColor.Ho, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("0.5%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>ʤʌgʌr</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ଓଡ଼ିଆ</Text>
+                        <View style={{ backgroundColor: BaseColor.Uridia, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>ଓଡ଼ିଆ</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("17%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
+                        <View style={{ backgroundColor: BaseColor.Santhali, width: widthToDp("17%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
-                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
-                <Text style={{marginLeft:widthToDp("3%"),marginTop:heightToDp("2%"),fontSize:widthToDp("7%"),fontFamily:'Oswald-Medium'}}>CROPS</Text>
+                <View style={{ borderBottomColor: BaseColor.Stroke, borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
+                <Text style={{ marginLeft: widthToDp("3%"), marginTop: heightToDp("2%"), fontSize: widthToDp("7%"), fontFamily: 'Oswald-Medium' }}>CROPS</Text>
                 {/* <View style={{ flexDirection: 'row', marginTop: heightToDp("5%") }}>
                     
                     <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("5%") }}>ENGLISH</Text>
@@ -91,12 +91,10 @@ export default class KnowledgeCenterScreen extends Component {
                         bouncesZoom={true}
                         renderItem={({ item }) => (
                             <TouchableOpacity onPress={() => this.props.navigation.navigate('LandTypeScreen')}>
-                                <View style={{ backgroundColor: 'white', width: widthToDp("46%"), height: heightToDp("30%"), elevation: 10, borderRadius: 10 }}>
-                                    <View style={{ backgroundColor: "#000", height: heightToDp("7%"), borderRadius: 10 }}>
-                                        <Text style={{ color: "#fff", fontSize: widthToDp("5%"), marginLeft: widthToDp("5%"), marginTop: heightToDp("1.8%"),fontFamily:'Oswald-Medium' }}>{item.name}</Text>
-                                    </View>
+                                <View style={{ backgroundColor: BaseColor.Red, width: widthToDp("47%"), height: heightToDp("30%"), elevation: 10, borderRadius: 10 }}>
+                                    <Text style={{ color: "#fff", fontSize: widthToDp("5%"), marginLeft: widthToDp("5%"), marginTop: heightToDp("0.4%"), fontFamily: 'Oswald-Medium' }}>{item.name}</Text>
                                     <Image
-                                        style={{ width: widthToDp("46%"), height: heightToDp("22.5%") }}
+                                        style={{ width: widthToDp("47%"), height: heightToDp("25%"), borderBottomLeftRadius: 10, borderBottomRightRadius: 10, marginTop: heightToDp("1%") }}
                                         source={{ uri: item.code }}
                                     />
                                 </View>
