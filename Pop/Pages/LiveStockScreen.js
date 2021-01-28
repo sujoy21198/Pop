@@ -41,6 +41,7 @@ export default class LiveStockScreen extends Component {
                 <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
                         <View style={{ backgroundColor: BaseColor.English, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
                             <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>ENGLISH</Text>
+                            
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
