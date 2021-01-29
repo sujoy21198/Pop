@@ -24,6 +24,7 @@ import StepEightScreen from './Pages/StepEightScreen'
 import ActualCultivationCostScreen from './Pages/ActualCultivationCostScreen'
 import CostBenifitAnalysisScreen from './Pages/CostBenifitAnalysisScreen'
 import LiveStockScreen from './Pages/LiveStockScreen'
+import IncomeScreen from './Pages/IncomeScreen'
 
 const Stack = createStackNavigator();
 
@@ -52,6 +53,7 @@ function AppStack(){
                 <Stack.Screen name="ActualCultivationCostScreen" component={ActualCultivationCostScreen}/>
                 <Stack.Screen name="CostBenifitAnalysisScreen" component={CostBenifitAnalysisScreen}/>
                 <Stack.Screen name="LiveStockScreen" component={LiveStockScreen}/>
+                <Stack.Screen name="IncomeScreen" component={IncomeScreen} />
             </Stack.Navigator>
         </NavigationContainer>
     );
