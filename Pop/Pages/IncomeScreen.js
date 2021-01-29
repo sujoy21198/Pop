@@ -64,17 +64,17 @@ export default class IncomeScreen extends Component {
                             <Income />
                             <Text style={{ marginLeft: widthToDp("3%"), fontSize: widthToDp("5%"), fontFamily: 'Oswald-Medium', color: 'white' }}>INCOME</Text>
                         </View>
-                        <Text style={{ marginLeft: widthToDp("45%"), fontSize: widthToDp("5%"), fontFamily: 'Oswald-Medium', color: 'white' }}>60000</Text>
-                        <Text style={{ marginLeft: widthToDp("3%"), fontSize: widthToDp("5%"), fontFamily: 'Oswald-Medium', color: 'white' }}>₹</Text>
+                        <Text style={{ marginLeft: widthToDp("45%"), fontSize: widthToDp("5%"), fontFamily: 'Oswald-Medium', color: 'white' }}>₹</Text>
+                        <Text style={{ marginLeft: widthToDp("3%"), fontSize: widthToDp("5%"), fontFamily: 'Oswald-Medium', color: 'white' }}>6000</Text>
                     </View>
                 </View>
 
                 <View style={{ flexDirection: 'row' }}>
                     <View style={{ flexDirection: 'row', marginTop: heightToDp("2%"), marginLeft: widthToDp("3%"), backgroundColor: 'white', borderRadius: 10, width: widthToDp("40%"), height: heightToDp("8%") }}>
-                        <View style={{ width: widthToDp("19%"), height: heightToDp("9%") }}>
-                            <Text style={{ marginLeft: widthToDp("3%"), fontSize: widthToDp("7%"), fontFamily: 'Oswald-Medium', color: 'black', marginTop: heightToDp("1.3%") }}>23100</Text>
+                        <View style={{ width: widthToDp("8%"), height: heightToDp("9%") }}>
+                            <Text style={{ marginLeft: widthToDp("3%"), fontSize: widthToDp("7%"), fontFamily: 'Oswald-Medium', color: 'black', marginTop: heightToDp("1.3%") }}>₹</Text>
                         </View>
-                        <Text style={{ marginLeft: widthToDp("13%"), fontSize: widthToDp("8%"), fontFamily: 'Oswald-Medium', color: 'black', marginTop: heightToDp("1%") }}>₹</Text>
+                        <Text style={{ marginLeft: widthToDp("8%"), fontSize: widthToDp("8%"), fontFamily: 'Oswald-Medium', color: 'black', marginTop: heightToDp("1%") }}>23000</Text>
                     </View>
 
                     <TouchableOpacity>
@@ -86,52 +86,68 @@ export default class IncomeScreen extends Component {
 
                 <ScrollView>
                     <View style={{ flexDirection: 'row', marginTop: heightToDp("3%"), marginLeft: widthToDp("3%") }}>
+                        <TouchableOpacity>
                         <Image
                             source={require('../assets/2000-Note.png')}
                             style={{ height: heightToDp("9%"), width: widthToDp("45%"), borderRadius: 10 }}
                         />
+                        </TouchableOpacity>
 
+                        <TouchableOpacity>
                         <Image
                             source={require('../assets/500-Note.jpg')}
                             style={{ height: heightToDp("9%"), width: widthToDp("40%"), borderRadius: 10, marginLeft: widthToDp("3.5%") }}
                         />
+                        </TouchableOpacity>
 
                     </View>
 
                     <View style={{ flexDirection: 'row', marginTop: heightToDp("3%"), marginLeft: widthToDp("3%") }}>
+
+                        <TouchableOpacity>
                         <Image
                             source={require('../assets/200-Note.jpg')}
                             style={{ height: heightToDp("9%"), width: widthToDp("45%"), borderRadius: 10 }}
                         />
-
+                        </TouchableOpacity>
+                        
+                        <TouchableOpacity>
                         <Image
                             source={require('../assets/100-Note.png')}
                             style={{ height: heightToDp("9%"), width: widthToDp("40%"), borderRadius: 10, marginLeft: widthToDp("3.5%") }}
                         />
+                        </TouchableOpacity>
 
                     </View>
 
                     <View style={{ flexDirection: 'row', marginTop: heightToDp("3%"), marginLeft: widthToDp("3%") }}>
+
+                        <TouchableOpacity>
                         <Image
                             source={require('../assets/50-Note.jpg')}
                             style={{ height: heightToDp("9%"), width: widthToDp("45%"), borderRadius: 10 }}
                         />
+                        </TouchableOpacity>
 
+                        <TouchableOpacity>
                         <Image
                             source={require('../assets/20-Note.png')}
                             style={{ height: heightToDp("9%"), width: widthToDp("40%"), borderRadius: 10, marginLeft: widthToDp("3.5%") }}
                         />
+                        </TouchableOpacity>
 
                     </View>
 
                     <View style={{ flexDirection: 'row', marginTop: heightToDp("3%"), marginLeft: widthToDp("3%") }}>
+                        <TouchableOpacity>
                         <Image
                             source={require('../assets/10-Note.png')}
                             style={{ height: heightToDp("9%"), width: widthToDp("45%"), borderRadius: 10 }}
                         />
+                        </TouchableOpacity>
                     </View>
 
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('ActualCultivationCostScreen')}>
+                    <TouchableOpacity>
                         <View style={{ backgroundColor: "#fff", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100, alignSelf: 'center', marginTop: heightToDp("2%") }}>
                             <Text style={{ fontSize: widthToDp("4%"), color: "#000", marginTop: heightToDp("1.7%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>NEXT</Text>
                         </View>

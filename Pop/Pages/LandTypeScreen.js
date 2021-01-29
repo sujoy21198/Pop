@@ -36,29 +36,29 @@ export default class LandTypeScreen extends Component {
                 </View>
                 <View style={{ borderBottomColor: BaseColor.Stroke, borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
                 <View style={{ flexDirection: 'row', marginTop: heightToDp("1%"), marginLeft:widthToDp("1%") }}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
+                        <View style={{ backgroundColor: BaseColor.English, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
                             <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ENGLISH</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                        <View style={{ backgroundColor: BaseColor.Hindi, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
                             <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>हिन्दी</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("0.6%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ʤʌgʌr</Text>
+                        <View style={{ backgroundColor: BaseColor.Ho, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("0.5%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ʤʌgʌr</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
+                        <View style={{ backgroundColor: BaseColor.Uridia, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
                             <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ଓଡ଼ିଆ</Text>
                         </View>
                     </TouchableOpacity>
                     <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: 'blue', width: widthToDp("17%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center' ,fontFamily:'Oswald-Medium'}}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
+                        <View style={{ backgroundColor: BaseColor.Santhali, width: widthToDp("17%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
                         </View>
                     </TouchableOpacity>
                 </View>
@@ -106,7 +106,7 @@ export default class LandTypeScreen extends Component {
                         style={{marginBottom:heightToDp("74%")}}
                         renderItem={({ item }) => 
                         <TouchableOpacity onPress={() => this.props.navigation.navigate('AnalysisScreen')}>
-                            <Card style={{width:widthToDp("90%"),marginLeft:widthToDp("3%"),height:heightToDp("30%"),marginBottom:heightToDp("1%"),borderRadius:20,backgroundColor:BaseColor.Red}}>
+                            <Card style={{width:widthToDp("94%"),marginLeft:widthToDp("3%"),height:heightToDp("30%"),marginBottom:heightToDp("1%"),borderRadius:20,backgroundColor:BaseColor.Red}}>
                                 <View style={{flexDirection:'row'}}>
                                     <View style={{width:widthToDp("45%")}}>
                                     <Text style={{color:'white',marginLeft:widthToDp("6%"),marginTop:heightToDp("1%"),fontSize:widthToDp("7%"),fontFamily:'Oswald-Medium'}}>{item.name}</Text>
@@ -119,7 +119,7 @@ export default class LandTypeScreen extends Component {
                                 </View>
                                 
                                 <Image
-                                style={{ width: widthToDp("89%"), height: heightToDp("22.8%"),marginLeft:widthToDp("0.4%"),borderRadius:2,marginTop:heightToDp("1%"),borderBottomLeftRadius:20,borderBottomRightRadius:20 }}
+                                style={{ width: widthToDp("93%"), height: heightToDp("22.8%"),marginLeft:widthToDp("0.4%"),borderRadius:2,marginTop:heightToDp("1%"),borderBottomLeftRadius:20,borderBottomRightRadius:20 }}
                                 source={{ uri: item.code }}
                                 />
                             </Card>
