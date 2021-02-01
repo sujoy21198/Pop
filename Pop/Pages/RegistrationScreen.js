@@ -219,7 +219,7 @@ export default class RegistrationScreen extends Component {
           <Logo />
         </View>
         <View style={{ marginTop: heightToDp("5%") }}>
-          <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center' }}>REGISTRATION</Text>
+          <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center' ,fontFamily: 'Oswald-Medium'}}>REGISTRATION</Text>
         </View>
         <ScrollView>
           <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
@@ -233,7 +233,7 @@ export default class RegistrationScreen extends Component {
           <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
             <Picker
               mode="dropdown"
-              itemStyle={{ fontSize: widthToDp('20%') }}
+              itemStyle={{fontFamily: 'Oswald-Medium'}}
               //selectedValue={this.state.language}
               style={{ width: widthToDp("83%") }}
             >
@@ -390,23 +390,23 @@ export default class RegistrationScreen extends Component {
             selected={true}
             style={{marginLeft:widthToDp("3%"),marginTop:heightToDp("1%")}}
             />
-            <Text style={{color:"#fff",marginTop:heightToDp("1%"),marginLeft:widthToDp("2%")}}>OTP</Text>
+            <Text style={{color:"#fff",marginTop:heightToDp("1%"),marginLeft:widthToDp("2%"),fontFamily: 'Oswald-Medium'}}>OTP</Text>
 
             <Radio 
             selected={false}
             style={{marginLeft:widthToDp("20%"),marginTop:heightToDp("1%")}}
             />
-            <Text style={{color:"#fff",marginTop:heightToDp("1%"),marginLeft:widthToDp("1%")}}>FIELD OFFICER PASSWORD</Text>
+            <Text style={{color:"#fff",marginTop:heightToDp("1%"),marginLeft:widthToDp("1%"),fontFamily: 'Oswald-Medium'}}>FIELD OFFICER PASSWORD</Text>
           </View>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
           <View style={{backgroundColor:BaseColor.SecondaryColor,marginTop:heightToDp("5%"),width:widthToDp("37%"),alignSelf:'center',height:heightToDp("5%"),borderRadius:100}}>
-            <Text style={{alignSelf:'center',marginTop:heightToDp("1.2%"),fontWeight:'500',fontSize:widthToDp("5%")}}>SIGN UP</Text>
+            <Text style={{alignSelf:'center',marginTop:heightToDp("0.5%"),fontWeight:'500',fontSize:widthToDp("5%"),fontFamily: 'Oswald-Medium'}}>SIGN UP</Text>
           </View>
           </TouchableOpacity>
           <View style={{flexDirection:'row',marginTop:heightToDp("4%"),alignSelf:'center'}}>
-          <Text style={{color:"#fff"}}>You have an account?</Text>
+          <Text style={{color:"#fff",fontFamily: 'Oswald-Medium'}}>You have an account?</Text>
           <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-          <Text style={{color:BaseColor.SecondaryColor}}>Sign in</Text>
+          <Text style={{color:BaseColor.SecondaryColor,fontFamily: 'Oswald-Medium'}}>Sign in</Text>
           </TouchableOpacity>
           </View>
 
@@ -427,7 +427,8 @@ var styles = StyleSheet.create({
   },
   labelInput: {
     color: '#000',
-    fontSize: widthToDp("4.6%")
+    fontSize: widthToDp("4.6%"),
+    fontFamily: 'Oswald-Medium'
   },
   formInput: {
     borderBottomWidth: 1.5,

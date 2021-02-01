@@ -5,7 +5,7 @@ import { Text } from 'native-base'
 import TopLogo from '../assets/TopLogo'
 import { widthToDp, heightToDp } from '../Responsive'
 import { FlatGrid, SectionGrid } from 'react-native-super-grid'
-
+import Icon from 'react-native-vector-icons/FontAwesome'
 
 
 const data = [
@@ -21,67 +21,81 @@ export default class KnowledgeCenterScreen extends Component {
     render() {
         return (
             <View style={{ backgroundColor: BaseColor.BackgroundColor }}>
-                <View style={{ backgroundColor: 'white', width: widthToDp("100%"), height: heightToDp("13%") }}>
-                    <View style={{ marginTop: heightToDp("4%"), marginLeft: widthToDp("3%") }}>
+                <View style={{ backgroundColor: 'white', width: widthToDp("100%"), height: heightToDp("13%"),flexDirection: 'row' }}>
+                    <View style={{ marginTop: heightToDp("3%"), marginLeft: widthToDp("3%") }}>
                         <TopLogo />
                     </View>
+                    <Icon
+                        name="bell"
+                        size={30}
+                        style={{ marginTop: heightToDp("4.6%"), marginLeft: widthToDp("52%") }}
+                        onPress={() => this.props.navigation.navigate('NotificationsScreen')}
+                    />
                 </View>
-
-                <View style={{ alignSelf: 'center', marginTop: heightToDp("2%") }}>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('NotificationsScreen')}>
-                        <View style={{ backgroundColor: "#000", height: heightToDp("6%"), width: widthToDp("30%"), borderRadius: 100 }}>
-
-                            <Text style={{ fontSize: widthToDp("4%"), color: "#fff", marginTop: heightToDp("1.4%"), alignSelf:'center',fontFamily:'Oswald-Medium' }}>NOTIFICATIONS</Text>
-
+                <View style={{ flexDirection: 'row', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}>
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
+                        <View style={{ backgroundColor: BaseColor.English, width: widthToDp("30%"), height: heightToDp("6%"), marginLeft: widthToDp("2%"), borderRadius: 100, flexDirection: 'row' }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1.5%"), fontFamily: 'Oswald-Medium', marginLeft: widthToDp("5%") }}>ENGLISH</Text>
+                            <Icon
+                                name="microphone"
+                                color="white"
+                                size={20}
+                                style={{ marginTop: heightToDp("1.8%"), marginLeft: widthToDp("6%") }}
+                            />
                         </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity onPress={() => this.props.navigation.navigate('IncomeScreen')}>
+                        <View style={{ backgroundColor: BaseColor.Hindi, width: widthToDp("30%"), height: heightToDp("6%"), marginLeft: widthToDp("2%"), borderRadius: 100,flexDirection:'row' }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1.7%"), marginLeft:widthToDp("5%"),fontWeight:'bold',fontSize:widthToDp("4.3%") }}>हिन्दी</Text>
+                            <Icon
+                            name="microphone"
+                            color="white"
+                            size={20}
+                            style={{marginTop:heightToDp("1.8%"),marginLeft:widthToDp("9%")}}
+                            />
+                        </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>
+                        <View style={{ backgroundColor: BaseColor.Ho, width: widthToDp("30%"), height: heightToDp("6%"), marginLeft: widthToDp("2%"), borderRadius: 100,flexDirection:'row' }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1.5%"), marginLeft:widthToDp("5%"),fontWeight:'bold',fontSize:widthToDp("4.3%") }}>ʤʌgʌr</Text>
+                            <Icon
+                            name="microphone"
+                            color="white"
+                            size={20}
+                            style={{marginTop:heightToDp("1.8%"),marginLeft:widthToDp("6.3%")}}
+                            />
+                        </View>
+                        </TouchableOpacity>
+                </View>
+                <View style={{ flexDirection: 'row', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%"),alignSelf:'center' }}>
+                <TouchableOpacity>
+                        <View style={{ backgroundColor: BaseColor.Uridia, width: widthToDp("30%"), height: heightToDp("6%"), borderRadius: 100,flexDirection:'row' }}>
+                            <Text style={{ color: '#fff', marginTop: heightToDp("1.7%"),marginLeft:widthToDp("4.7%"),fontWeight:'bold',fontSize:widthToDp("4.3%") }}>ଓଡ଼ିଆ</Text>
+                            <Icon
+                            name="microphone"
+                            color="white"
+                            size={20}
+                            style={{marginTop:heightToDp("1.8%"),marginLeft:widthToDp("6.9%")}}
+                            />
+                        </View>
+                        </TouchableOpacity>
+
+                        <TouchableOpacity>
+                    <View style={{backgroundColor:BaseColor.Santhali, width: widthToDp("30%"), height: heightToDp("6%"),  borderRadius: 100, marginLeft: widthToDp("2%"),flexDirection:'row' }}>
+                        <Text style={{ color: '#fff', marginTop: heightToDp("1.7%"), marginLeft:widthToDp("3.4%"),fontWeight:'bold',fontSize:widthToDp("4.3%") }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
+                        <Icon
+                            name="microphone"
+                            color="white"
+                            size={20}
+                            style={{marginTop:heightToDp("1.8%"),marginLeft:widthToDp("3%")}}
+                            />
+                    </View>
                     </TouchableOpacity>
                 </View>
-                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
-                <View style={{ flexDirection: 'row',marginTop:heightToDp("1%"),marginLeft:widthToDp("1%") }}>
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: BaseColor.English, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("2%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ENGLISH</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: BaseColor.Hindi, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>हिन्दी</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: BaseColor.Ho, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("0.5%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ʤʌgʌr</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: BaseColor.Uridia, width: widthToDp("15%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ଓଡ଼ିଆ</Text>
-                        </View>
-                    </TouchableOpacity>
-                    <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-                        <View style={{ backgroundColor: BaseColor.Santhali, width: widthToDp("17%"), height: heightToDp("5%"), marginLeft: widthToDp("4%"), borderRadius: 100 }}>
-                            <Text style={{ color: '#fff', marginTop: heightToDp("1%"), alignSelf: 'center',fontFamily:'Oswald-Medium' }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
-                        </View>
-                    </TouchableOpacity>
-                </View>
-                <View style={{ borderBottomColor: 'white', borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
+                <View style={{ borderBottomColor: BaseColor.Stroke, borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%") }}></View>
                 <Text style={{marginLeft:widthToDp("3%"),marginTop:heightToDp("2%"),fontSize:widthToDp("7%"),fontFamily:'Oswald-Medium'}}>KNOWLEDGE CENTER</Text>
-                {/* <View style={{ flexDirection: 'row', marginTop: heightToDp("5%") }}>
-                    
-                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("5%") }}>ENGLISH</Text>
-                    <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
-                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>हिन्दी</Text>
-                    <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
-                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>ʤʌgʌr</Text>
-                    <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
-                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>ଓଡ଼ିଆ</Text>
-                    <View style={{ height: heightToDp("5%"), width: 1, backgroundColor: '#909090', marginTop: heightToDp("1%"), marginLeft: widthToDp("1%") }}></View>
-                    <Text style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("1%") }}>ᱥᱟᱱᱛᱟᱲᱤ</Text>
-                </View> */}
-                {/* <Image
-                style={{width:30,height:30}}
-                source={{uri:'https://upload.wikimedia.org/wikipedia/commons/4/48/Basketball.jpeg'}}
-                /> */}
                 <View>
                     <FlatGrid
                         style={{ marginTop: heightToDp("1%"), marginBottom: heightToDp("74%") }}
