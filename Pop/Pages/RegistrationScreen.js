@@ -9,217 +9,135 @@ import Icon from 'react-native-vector-icons/AntDesign'
 import Calendar from 'react-native-vector-icons/AntDesign'
 import FloatingLabel from 'react-native-floating-labels'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
-// export default class RegistrationScreen extends Component {
+import DatePicker from 'react-native-datepicker'
+import DeviceInfo from 'react-native-device-info'
+import axios from 'axios';
 
-//   render() {
-//     return (
-//       <View style={styles.container}>
-//         <View style={{ alignSelf: 'center', marginTop: heightToDp("2%") }}>
-//           <Logo />
-//         </View>
-//         <View style={{ alignSelf: 'center' }}>
-//           <Text style={{ color: BaseColor.SecondaryColor, fontSize: widthToDp("8%"),marginTop:heightToDp("5%") }}>REGISTRATION</Text>
-//         </View>
-//         <ScrollView>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"),marginTop:heightToDp("5%") }}>
-//             <Input
-//               placeholder="Full name"
-//               label="FULL NAME"
-//               labelStyle={{ fontSize: widthToDp("2.7%"), color: "#fff" }}
-//               style={{ width: widthToDp("10%"), color: BaseColor.SecondaryColor }}
-//             />
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"),marginTop:heightToDp("2.5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>GENDER</Text>
-//               <Icon
-//                 name="down"
-//                 style={{ color: "#fff", marginLeft: widthToDp("62%") }}
-//                 size={25}
-//               />
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>AGE</Text>
-
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>CONTACT NUMBER</Text>
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>USERNAME</Text>
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>PASSWORD</Text>
-//               <Calendar
-//                 name="eye"
-//                 style={{ color: "#fff", marginLeft: widthToDp("55%") }}
-//                 size={25}
-//               />
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>CONFIRM PASSWORD</Text>
-//               <Calendar
-//                 name="eye"
-//                 style={{ color: "#fff", marginLeft: widthToDp("35%") }}
-//                 size={25}
-//               />
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>STATE</Text>
-//               <Icon
-//                 name="down"
-//                 style={{ color: "#fff", marginLeft: widthToDp("66%") }}
-//                 size={25}
-//               />
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>DISTRICT</Text>
-//               <Icon
-//                 name="down"
-//                 style={{ color: "#fff", marginLeft: widthToDp("60%") }}
-//                 size={25}
-//               />
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>GRAMPANCHAYAT</Text>
-//               <Icon
-//                 name="down"
-//                 style={{ color: "#fff", marginLeft: widthToDp("41%") }}
-//                 size={25}
-//               />
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>VILLAGE</Text>
-//               <Icon
-//                 name="down"
-//                 style={{ color: "#fff", marginLeft: widthToDp("61%") }}
-//                 size={25}
-//               />
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>AADHAR NUMBER</Text>
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-//           <View style={{ width: widthToDp("90%"), marginLeft: widthToDp("3%"), marginTop: heightToDp("5%") }}>
-//             <View style={{ flexDirection: 'row', marginBottom: heightToDp("1%") }}>
-//               <Text style={{ color: "#fff", fontSize: widthToDp("4.8%"), marginLeft: widthToDp("2%") }}>IMEI NUMBER-1</Text>
-//             </View>
-//             <Item style={{ width: widthToDp("85.2%"), marginLeft: widthToDp("2%") }}></Item>
-//           </View>
-          // <View style={{flexDirection:'row',marginTop: heightToDp("5%")}}>
-          //   <Radio 
-          //   selected={true}
-          //   style={{marginLeft:widthToDp("3%"),marginTop:heightToDp("1%")}}
-          //   />
-          //   <Text style={{color:"#fff",marginTop:heightToDp("1%"),marginLeft:widthToDp("2%")}}>OTP</Text>
-
-          //   <Radio 
-          //   selected={false}
-          //   style={{marginLeft:widthToDp("20%"),marginTop:heightToDp("1%")}}
-          //   />
-          //   <Text style={{color:"#fff",marginTop:heightToDp("1%"),marginLeft:widthToDp("1%")}}>FIELD OFFICER PASSWORD</Text>
-          // </View>
-          // <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-          // <View style={{backgroundColor:BaseColor.SecondaryColor,marginTop:heightToDp("5%"),width:widthToDp("37%"),alignSelf:'center',height:heightToDp("5%"),borderRadius:100}}>
-          //   <Text style={{alignSelf:'center',marginTop:heightToDp("1.2%"),fontWeight:'500',fontSize:widthToDp("5%")}}>SIGN UP</Text>
-          // </View>
-          // </TouchableOpacity>
-          // <View style={{flexDirection:'row',marginTop:heightToDp("4%"),alignSelf:'center'}}>
-          // <Text style={{color:"#fff"}}>You have an account?</Text>
-          // <Text style={{color:BaseColor.SecondaryColor}}>Sign in</Text>
-          // </View>
-
-//           <View style={{marginTop:heightToDp("10%")}}></View>
-
-//         </ScrollView>
-//       </View>
-//     );
-//   }
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     height: heightToDp("100%"),
-//     backgroundColor: BaseColor.BackgroundColor
-//   }
-// })
-
+const headers = {
+  'Content-Type': 'application/json'
+}
 
 export default class RegistrationScreen extends Component {
 
   constructor(props) {
     super(props)
     this.state = {
-      imei: '',
-      result: ''
+      date: '',
+      age: 'AGE',
+      deviceId: '',
+      genderPicker: '',
+      fullname: '',
+      phoneNumber:'',
+      username:'',
+      password:'',
+      confirmPassword:'',
+      state:'',
+      district:'',
+      gram:'',
+      village:'',
+      participantNumber:'',
+      fieldOfficerPass:''
     }
-    this.checkPermissions();
-    this.requestPermission();
-    //this.getDeviceIMEI();
   }
 
-  requestPermission = async () => {
-    const granted = await PermissionsAndroid.request(
-      PermissionsAndroid.PERMISSIONS.READ_PHONE_STATE, {
-      title: 'hello',
-      message: 'hi'
-    }
-    )
+  componentDidMount() {
+    this.getDeviceId()
+  }
+  getDeviceId = async () => {
+    var deviceId = await DeviceInfo.getAndroidId()
+    this.setState({ deviceId: deviceId })
   }
 
-  checkPermissions = async () => {
-    const result = await PermissionsAndroid.check(PermissionsAndroid.PERMISSIONS.READ_PHONE_STATE);
-    console.log(result)
-    return result
+  signup = async () => {
+    // await axios.get('http://127.0.0.1:3000/api/v1/token').then(function (response) {
+    //   console.log(response)
+    // }).catch(function (error){
+    //   console.log(error)
+    // })
+    await axios.post('http://161.35.122.165:3020/api/v1/signup', {
+      name: this.state.fullname,
+      gender: this.state.genderPicker,
+      dob: this.state.date,
+      age: this.state.age,
+      phone: this.state.phoneNumber,
+      username: this.state.username,
+      password: this.state.password,
+      state: this.state.state,
+      district: this.state.district,
+      panchayat: this.state.gram,
+      village: this.state.village,
+      participantNumber: "HTE123367",
+      officerPassword:'234',
+      deviceId:this.state.deviceId
+    }, {
+      headers: {
+        'Content-type': 'application/json'
+      }
+    }).then(function (response) {
+      console.log(response.data)
+      alert(response.data.msg)
+    }).catch(function (error) {
+      console.log(error)
+    })
   }
 
+  ageCalculator = (date) => {
 
-  // getDeviceIMEI = () => {
-  //   const IMEI = require('react-native-imei');
-  //   IMEI.getImei().then(imeiList => {
-  //     console.log(imeiList)
-  //   });
-  // }
+    var currentyear = new Date().getFullYear();
+    //alert(JSON.stringify(date).length)
+    var dateFormat = JSON.stringify(date)
+    var format = dateFormat.toString().replace(/['"]+/g, '')
+    var year = format.substr(format.length - 4)
+    var age = currentyear - year
+    this.setState({ date: date })
+    this.setState({ age: age })
+  }
+
+  statePicker = (value) => {
+    this.setState({
+      state : value
+    })
+  }
+
+  districtPicker = (value) => {
+    this.setState({
+      district : value
+    })
+  }
+
+  gramPicker = (value) => {
+    this.setState({
+      gram : value
+    })
+  }
+
+  villagePicker = (value) => {
+    this.setState({
+      village : value
+    })
+  }
+
+  pickerValue = (value) => {
+    //alert(value)
+    this.setState({
+      genderPicker: value
+    })
+  }
+
+  FullName = (value) => {
+    this.setState({
+      fullname: value
+    })
+  }
 
   render() {
     return (
-      <View style={{backgroundColor:BaseColor.BackgroundColor,flex:1}}>
+      <View style={{ backgroundColor: BaseColor.BackgroundColor, flex: 1 }}>
         <View style={{ marginTop: heightToDp("3%"), alignSelf: "center" }}>
           <Logo />
         </View>
         <View style={{ marginTop: heightToDp("5%") }}>
-          <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center' ,fontFamily: 'Oswald-Medium'}}>REGISTRATION</Text>
+          <Text style={{ fontSize: widthToDp("7%"), alignSelf: 'center', fontFamily: 'Oswald-Medium' }}>REGISTRATION</Text>
         </View>
         <ScrollView>
           <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
@@ -227,22 +145,74 @@ export default class RegistrationScreen extends Component {
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
-            // onBlur={this.onBlur}
+              onChangeText={(value) => this.FullName(value)}
             >FULL NAME</FloatingLabel>
           </View>
           <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
             <Picker
               mode="dropdown"
-              itemStyle={{fontFamily: 'Oswald-Medium'}}
-              //selectedValue={this.state.language}
+              itemStyle={{ fontFamily: 'Oswald-Medium' }}
+              selectedValue={this.state.genderPicker}
+              onValueChange={(value) => this.pickerValue(value)}
               style={{ width: widthToDp("83%") }}
             >
-              <Picker.Item label="Gender" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
+              <Picker.Item label="Gender" value="gender" />
+              <Picker.Item label="Male" value="male" />
+              <Picker.Item label="Female" value="female" />
+              <Picker.Item label="Others" value="others" />
             </Picker>
+          </View>
+          <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+          <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("5%"), flexDirection: 'row' }}>
+            {/* <View style={{ width: widthToDp("30%") }}>
+              <Text style={{color: '#000',fontSize: widthToDp("4.6%"),fontFamily: 'Oswald-Medium'}}>DATE OF BIRTH</Text>
+            </View>
+            <Icon
+              name="calendar"
+              size={25}
+              style={{ marginLeft: widthToDp("44%") }}
+              onPress={() => this.check()}
+            /> */}
+            <DatePicker
+              androidMode='calendar'
+              date={this.state.date}
+              mode="date"
+
+              showIcon={false}
+              // iconComponent={
+              //   <Icon
+              //   name="calendar"
+              //   size={25}
+              //   //style={{marginLeft:widthToDp("30%")}}
+              //   />
+              // }
+              placeholder="DATE OF BIRTH"
+              format="DD-MM-YYYY"
+              confirmBtnText="Confirm"
+              cancelBtnText="Cancel"
+              //onDateChange={(date) => { this.setState({ date: date }) }}
+              onDateChange={(date) => this.ageCalculator(date)}
+              customStyles={{
+                placeholderText: {
+                  fontFamily: 'Oswald-Medium',
+                  color: '#000',
+                  fontSize: widthToDp("4.5")
+                },
+                dateText: {
+                  fontFamily: 'Oswald-Medium',
+                  color: '#000',
+                  fontSize: widthToDp("4.5")
+                },
+                dateInput: {
+                  borderWidth: 0
+                },
+              }}
+            />
+            <Icon
+              name="calendar"
+              size={25}
+              style={{ marginTop: heightToDp("1%"), marginLeft: widthToDp("42%") }}
+            />
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
           <View style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("8%") }}>
@@ -251,13 +221,14 @@ export default class RegistrationScreen extends Component {
               inputStyle={styles.input}
               style={styles.formInput}
             // onBlur={this.onBlur}
-            >AGE</FloatingLabel>
+            >{this.state.age}</FloatingLabel>
           </View>
           <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
             <FloatingLabel
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
+              onChangeText={(text) => {this.setState({phoneNumber:text})}}
             // onBlur={this.onBlur}
             >CONTACT NUMBER</FloatingLabel>
           </View>
@@ -266,6 +237,7 @@ export default class RegistrationScreen extends Component {
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
+              onChangeText={(text) => {this.setState({username:text})}}
             // onBlur={this.onBlur}
             >USERNAME</FloatingLabel>
           </View>
@@ -274,6 +246,7 @@ export default class RegistrationScreen extends Component {
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
+              onChangeText={(text) => {this.setState({password:text})}}
             // onBlur={this.onBlur}
             >PASSWORD</FloatingLabel>
           </View>
@@ -282,6 +255,7 @@ export default class RegistrationScreen extends Component {
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
+              onChangeText={(text) => {this.setState({confirmPassword:text})}}
             // onBlur={this.onBlur}
             >CONFIRM PASSWORD</FloatingLabel>
           </View>
@@ -290,13 +264,12 @@ export default class RegistrationScreen extends Component {
               mode="dropdown"
               itemStyle={{ fontSize: widthToDp('20%') }}
               //selectedValue={this.state.language}
+              selectedValue={this.state.state}
+              onValueChange={(value) => this.statePicker(value)}
               style={{ width: widthToDp("83%") }}
             >
-              <Picker.Item label="State" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
+              <Picker.Item label="State" value="state" />
+              <Picker.Item label="test" value="test" />
             </Picker>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
@@ -313,13 +286,12 @@ export default class RegistrationScreen extends Component {
               mode="dropdown"
               itemStyle={{ fontSize: widthToDp('20%') }}
               //selectedValue={this.state.language}
+              selectedValue={this.state.district}
+              onValueChange={(value) => this.districtPicker(value)}
               style={{ width: widthToDp("83%") }}
             >
               <Picker.Item label="District" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
+              <Picker.Item label="disTest" value="disTest" />
             </Picker>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
@@ -335,14 +307,13 @@ export default class RegistrationScreen extends Component {
             <Picker
               mode="dropdown"
               itemStyle={{ fontSize: widthToDp('20%') }}
+              selectedValue={this.state.gram}
+              onValueChange={(value) => this.gramPicker(value)}
               //selectedValue={this.state.language}
               style={{ width: widthToDp("83%") }}
             >
               <Picker.Item label="Grampanchayat" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
+              <Picker.Item label="gram" value="gram" />
             </Picker>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
@@ -359,13 +330,12 @@ export default class RegistrationScreen extends Component {
               mode="dropdown"
               itemStyle={{ fontSize: widthToDp('20%') }}
               //selectedValue={this.state.language}
+              selectedValue={this.state.village}
+              onValueChange={(value) => this.villagePicker(value)}
               style={{ width: widthToDp("83%") }}
             >
               <Picker.Item label="Village" value="java" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
-              <Picker.Item label="JavaScript" value="js" />
+              <Picker.Item label="village" value="village" />
             </Picker>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
@@ -374,8 +344,9 @@ export default class RegistrationScreen extends Component {
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
+              onChangeText={(text) => {this.setState({participantNumber:text})}}
             // onBlur={this.onBlur}
-            >AADHAAR NUMBER</FloatingLabel>
+            >PARTICIPANT NUMBER</FloatingLabel>
           </View>
           <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
             <FloatingLabel
@@ -383,34 +354,32 @@ export default class RegistrationScreen extends Component {
               inputStyle={styles.input}
               style={styles.formInput}
             // onBlur={this.onBlur}
-            >IMEI NUMBER</FloatingLabel>
+            >{this.state.deviceId}</FloatingLabel>
           </View>
-          <View style={{flexDirection:'row',marginTop: heightToDp("5%"),marginLeft:widthToDp("4%")}}>
-            <Radio 
-            selected={true}
-            style={{marginLeft:widthToDp("3%"),marginTop:heightToDp("1%")}}
+          <View style={{ flexDirection: 'row', marginTop: heightToDp("5%"), marginLeft: widthToDp("4%") }}>
+            <Radio
+              selected={false}
+              style={{ marginLeft: widthToDp("3%"), marginTop: heightToDp("1%") }}
             />
-            <Text style={{color:"#fff",marginTop:heightToDp("1%"),marginLeft:widthToDp("2%"),fontFamily: 'Oswald-Medium'}}>OTP</Text>
+            <Text style={{ color: "#fff", marginTop: heightToDp("1%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>OTP</Text>
 
-            <Radio 
-            selected={false}
-            style={{marginLeft:widthToDp("20%"),marginTop:heightToDp("1%")}}
+            <Radio
+              selected={true}
+              style={{ marginLeft: widthToDp("20%"), marginTop: heightToDp("1%") }}
             />
-            <Text style={{color:"#fff",marginTop:heightToDp("1%"),marginLeft:widthToDp("1%"),fontFamily: 'Oswald-Medium'}}>FIELD OFFICER PASSWORD</Text>
+            <Text style={{ color: "#fff", marginTop: heightToDp("1%"), marginLeft: widthToDp("1%"), fontFamily: 'Oswald-Medium' }}>FIELD OFFICER PASSWORD</Text>
           </View>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-          <View style={{backgroundColor:BaseColor.SecondaryColor,marginTop:heightToDp("5%"),width:widthToDp("37%"),alignSelf:'center',height:heightToDp("5%"),borderRadius:100}}>
-            <Text style={{alignSelf:'center',marginTop:heightToDp("0.5%"),fontWeight:'500',fontSize:widthToDp("5%"),fontFamily: 'Oswald-Medium'}}>SIGN UP</Text>
-          </View>
+          <TouchableOpacity onPress={() => this.signup()}>
+            <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("5%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
+              <Text style={{ alignSelf: 'center', marginTop: heightToDp("0.5%"), fontWeight: '500', fontSize: widthToDp("5%"), fontFamily: 'Oswald-Medium' }}>SIGN UP</Text>
+            </View>
           </TouchableOpacity>
-          <View style={{flexDirection:'row',marginTop:heightToDp("4%"),alignSelf:'center'}}>
-          <Text style={{color:"#fff",fontFamily: 'Oswald-Medium'}}>You have an account?</Text>
-          <TouchableOpacity onPress={() => this.props.navigation.navigate('SigninScreen')}>
-          <Text style={{color:BaseColor.SecondaryColor,fontFamily: 'Oswald-Medium'}}>Sign in</Text>
-          </TouchableOpacity>
+          <View style={{ flexDirection: 'row', marginTop: heightToDp("4%"), alignSelf: 'center' }}>
+            <Text style={{ color: "#fff", fontFamily: 'Oswald-Medium' }}>You have an account?</Text>
+            <TouchableOpacity >
+              <Text style={{ color: BaseColor.SecondaryColor, fontFamily: 'Oswald-Medium' }}>Sign in</Text>
+            </TouchableOpacity>
           </View>
-
-
           <View style={{ marginTop: heightToDp("10%") }}></View>
         </ScrollView>
       </View>
