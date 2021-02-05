@@ -1,21 +1,28 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, ScrollView, TouchableOpacity, PermissionsAndroid } from 'react-native'
-import { Text, Item, ListItem, Radio, Right, Left, Picker } from 'native-base'
+import { Text, Item, ListItem, Right, Left, Picker,Toast,Input } from 'native-base'
 import { heightToDp, widthToDp } from '../Responsive';
 import BaseColor from '../Core/BaseTheme';
 import Logo from '../assets/Logo';
-import { Input } from 'react-native-elements';
-import Icon from 'react-native-vector-icons/AntDesign'
+import Icon from 'react-native-vector-icons/EvilIcons'
 import Calendar from 'react-native-vector-icons/AntDesign'
 import FloatingLabel from 'react-native-floating-labels'
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 import DatePicker from 'react-native-datepicker'
 import DeviceInfo from 'react-native-device-info'
 import axios from 'axios';
+import RBSheet from "react-native-raw-bottom-sheet"
+import RBSheet2 from "react-native-raw-bottom-sheet"
+import RBSheet3 from "react-native-raw-bottom-sheet"
+import RBSheet4 from "react-native-raw-bottom-sheet"
+import RBSheet5 from "react-native-raw-bottom-sheet"
+import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
 
-const headers = {
-  'Content-Type': 'application/json'
-}
+
+const radio_props = [
+    {label: 'OTP' , value:0},
+    {label:'FIELD OFFICER PASSWORD', value:1}
+]
 
 export default class RegistrationScreen extends Component {
 
@@ -25,30 +32,65 @@ export default class RegistrationScreen extends Component {
       date: '',
       age: 'AGE',
       deviceId: '',
-      genderPicker: '',
+      genderPicker: 'GENDER',
       fullname: '',
-      phoneNumber:'',
-      username:'',
-      password:'',
-      confirmPassword:'',
-      state:'',
-      district:'',
-      gram:'',
-      village:'',
-      participantNumber:'',
-      fieldOfficerPass:''
+      phoneNumber: '',
+      username: '',
+      password: '',
+      confirmPassword: '',
+      state: 'STATE',
+      district: 'DISTRICT',
+      gram: 'GRAMPANCHAYAT',
+      village: 'VILLAGE',
+      participantNumber: '',
+      fieldOfficerPass: '',
+      value:'',
+      status:'',
+      passwordVisibility:true
     }
   }
 
   componentDidMount() {
     this.getDeviceId()
+
   }
+  
+  checkStatus = (value) => {
+    this.setState({value:value})
+    if(value === 1){
+      this.setState({status:true})
+    }else{
+      this.setState({status:false})
+    }
+  }
+
   getDeviceId = async () => {
     var deviceId = await DeviceInfo.getAndroidId()
     this.setState({ deviceId: deviceId })
   }
 
   signup = async () => {
+
+    var name = this.state.fullname
+    if(this.state.age<12){
+      return Toast.show({
+        text:"Age must be grater than 12",
+        duration:3000,
+        type:'danger'
+      })
+    }else if(this.state.password != this.state.confirmPassword){
+      return Toast.show({
+        text:"Password doesn't match",
+        duration:3000,
+        type:'danger'
+      })
+    }else if(this.state.phoneNumber.length != 10){
+      return Toast.show({
+        text:"Phone number shoud consist of 10 digits",
+        duration:3000,
+        type:'danger'
+      })
+    }
     // await axios.get('http://127.0.0.1:3000/api/v1/token').then(function (response) {
     //   console.log(response)
     // }).catch(function (error){
@@ -66,16 +108,21 @@ export default class RegistrationScreen extends Component {
       district: this.state.district,
       panchayat: this.state.gram,
       village: this.state.village,
-      participantNumber: "HTE123367",
-      officerPassword:'234',
-      deviceId:this.state.deviceId
+      participantNumber: this.state.participantNumber,
+      officerPassword: this.state.fieldOfficerPass,
+      deviceId: this.state.deviceId
     }, {
       headers: {
         'Content-type': 'application/json'
       }
     }).then(function (response) {
       console.log(response.data)
-      alert(response.data.msg)
+      // alert(response.data.msg)
+      Toast.show({
+        text: name +' '+ response.data.msg,
+        type:'success',
+        duration:3000
+      })
     }).catch(function (error) {
       console.log(error)
     })
@@ -93,36 +140,46 @@ export default class RegistrationScreen extends Component {
     this.setState({ age: age })
   }
 
+  genderPicker = (value) => {
+    this.setState({
+      genderPicker: value
+    })
+    this.RBSheet.close()
+    // this.setState({
+    //   genderPicker: value
+    // })
+  }
+
   statePicker = (value) => {
     this.setState({
-      state : value
+      state: value
     })
+    this.RBSheet3.close()
   }
 
   districtPicker = (value) => {
     this.setState({
-      district : value
+      district: value
     })
+    this.RBSheet4.close()
   }
 
   gramPicker = (value) => {
     this.setState({
-      gram : value
+      gram: value
     })
+
+    this.RBSheet2.close()
   }
 
   villagePicker = (value) => {
     this.setState({
-      village : value
+      village: value
     })
+    this.RBSheet5.close()
   }
 
-  pickerValue = (value) => {
-    //alert(value)
-    this.setState({
-      genderPicker: value
-    })
-  }
+  
 
   FullName = (value) => {
     this.setState({
@@ -148,10 +205,49 @@ export default class RegistrationScreen extends Component {
               onChangeText={(value) => this.FullName(value)}
             >FULL NAME</FloatingLabel>
           </View>
-          <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
-            <Picker
+          <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%"), flexDirection: 'row' }}>
+            <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet.open()}>
+              <View style={{ width: widthToDp("30%") }}>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.genderPicker}</Text>
+              </View>
+
+              <Icon
+                name="chevron-down"
+                size={40}
+                style={{ marginLeft: widthToDp("43%") }}
+              />
+            </TouchableOpacity>
+            <RBSheet
+              ref={ref => {
+                this.RBSheet = ref;
+              }}
+              height={heightToDp("20%")}
+              // openDuration={250}
+              customStyles={{
+                container: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor:'rgba(51,204,51,0.9)',
+                  borderRadius:30
+                }
+              }}
+            >
+              <TouchableOpacity onPress={() => this.genderPicker("MALE")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>MALE</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+              <TouchableOpacity onPress={() => this.genderPicker("FEMALE")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium',marginTop: heightToDp('3%') }}>FEMALE</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+              <TouchableOpacity onPress={() => this.genderPicker("NON-BINARY")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium',marginTop: heightToDp('3%') }}>NON-BINARY</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+            </RBSheet>
+            {/* <Picker
               mode="dropdown"
-              itemStyle={{ fontFamily: 'Oswald-Medium' }}
+              
               selectedValue={this.state.genderPicker}
               onValueChange={(value) => this.pickerValue(value)}
               style={{ width: widthToDp("83%") }}
@@ -160,7 +256,7 @@ export default class RegistrationScreen extends Component {
               <Picker.Item label="Male" value="male" />
               <Picker.Item label="Female" value="female" />
               <Picker.Item label="Others" value="others" />
-            </Picker>
+            </Picker> */}
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
           <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("5%"), flexDirection: 'row' }}>
@@ -208,27 +304,30 @@ export default class RegistrationScreen extends Component {
                 },
               }}
             />
-            <Icon
+            <Calendar
               name="calendar"
               size={25}
               style={{ marginTop: heightToDp("1%"), marginLeft: widthToDp("42%") }}
             />
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
-          <View style={{ marginTop: heightToDp("2%"), marginLeft: widthToDp("8%") }}>
-            <FloatingLabel
+          <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
+            {/* <FloatingLabel
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
             // onBlur={this.onBlur}
-            >{this.state.age}</FloatingLabel>
+            >{this.state.age}</FloatingLabel> */}
+            <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.age}</Text>
+            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("1%") }}></View>
           </View>
           <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
             <FloatingLabel
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
-              onChangeText={(text) => {this.setState({phoneNumber:text})}}
+              keyboardType='numeric'
+              onChangeText={(text) => { this.setState({ phoneNumber: text }) }}
             // onBlur={this.onBlur}
             >CONTACT NUMBER</FloatingLabel>
           </View>
@@ -237,7 +336,7 @@ export default class RegistrationScreen extends Component {
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
-              onChangeText={(text) => {this.setState({username:text})}}
+              onChangeText={(text) => { this.setState({ username: text }) }}
             // onBlur={this.onBlur}
             >USERNAME</FloatingLabel>
           </View>
@@ -246,7 +345,8 @@ export default class RegistrationScreen extends Component {
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
-              onChangeText={(text) => {this.setState({password:text})}}
+              password={this.state.passwordVisibility}
+              onChangeText={(text) => { this.setState({ password: text }) }}
             // onBlur={this.onBlur}
             >PASSWORD</FloatingLabel>
           </View>
@@ -255,22 +355,43 @@ export default class RegistrationScreen extends Component {
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
-              onChangeText={(text) => {this.setState({confirmPassword:text})}}
+              password={this.state.passwordVisibility}
+              onChangeText={(text) => { this.setState({ confirmPassword: text }) }}
             // onBlur={this.onBlur}
             >CONFIRM PASSWORD</FloatingLabel>
           </View>
-          <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
-            <Picker
-              mode="dropdown"
-              itemStyle={{ fontSize: widthToDp('20%') }}
-              //selectedValue={this.state.language}
-              selectedValue={this.state.state}
-              onValueChange={(value) => this.statePicker(value)}
-              style={{ width: widthToDp("83%") }}
+          <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
+          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet3.open()}>
+              <View style={{ width: widthToDp("30%") }}>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.state}</Text>
+              </View>
+
+              <Icon
+                name="chevron-down"
+                size={40}
+                style={{ marginLeft: widthToDp("43%") }}
+              />
+            </TouchableOpacity>
+            <RBSheet3
+              ref={ref => {
+                this.RBSheet3 = ref;
+              }}
+              height={heightToDp("20%")}
+              // openDuration={250}
+              customStyles={{
+                container: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor:'rgba(51,204,51,0.9)',
+                  borderRadius:30
+                }
+              }}
             >
-              <Picker.Item label="State" value="state" />
-              <Picker.Item label="test" value="test" />
-            </Picker>
+              <TouchableOpacity onPress={() => this.statePicker("JHARKHAND")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>JHARKHAND</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+            </RBSheet3>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
           {/* <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
@@ -281,83 +402,177 @@ export default class RegistrationScreen extends Component {
             // onBlur={this.onBlur}
             >DISTRICT</FloatingLabel>
           </View> */}
-          <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
-            <Picker
-              mode="dropdown"
-              itemStyle={{ fontSize: widthToDp('20%') }}
-              //selectedValue={this.state.language}
-              selectedValue={this.state.district}
-              onValueChange={(value) => this.districtPicker(value)}
-              style={{ width: widthToDp("83%") }}
+          <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
+          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet4.open()}>
+              <View style={{ width: widthToDp("30%") }}>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.district}</Text>
+              </View>
+
+              <Icon
+                name="chevron-down"
+                size={40}
+                style={{ marginLeft: widthToDp("43%") }}
+              />
+            </TouchableOpacity>
+            <RBSheet4
+              ref={ref => {
+                this.RBSheet4 = ref;
+              }}
+              height={heightToDp("20%")}
+              // openDuration={250}
+              customStyles={{
+                container: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor:'rgba(51,204,51,0.9)',
+                  borderRadius:30
+                }
+              }}
             >
-              <Picker.Item label="District" value="java" />
-              <Picker.Item label="disTest" value="disTest" />
-            </Picker>
+              <TouchableOpacity onPress={() => this.districtPicker("BOKARO")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>BOKARO</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+            </RBSheet4>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
-          {/* <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
+    
+          <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
+          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet2.open()}>
+              <View style={{ width: widthToDp("31%") }}>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.gram}</Text>
+              </View>
+
+              <Icon
+                name="chevron-down"
+                size={40}
+                style={{ marginLeft: widthToDp("42%") }}
+              />
+            </TouchableOpacity>
+            <RBSheet2
+              ref={ref => {
+                this.RBSheet2 = ref;
+              }}
+              height={heightToDp("20%")}
+              // openDuration={250}
+              customStyles={{
+                container: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor:'rgba(51,204,51,0.9)',
+                  borderRadius:30
+                }
+              }}
+            >
+              <TouchableOpacity onPress={() => this.gramPicker("JHARGRAM")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>JHARGRAM</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+              <TouchableOpacity onPress={() => this.gramPicker("LALGARH")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium',marginTop: heightToDp('3%') }}>LALGARH</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+              <TouchableOpacity onPress={() => this.gramPicker("BINPUR")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium',marginTop: heightToDp('3%') }}>BINPUR</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+            </RBSheet2>
+          </View>
+          <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+          
+          <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
+          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet5.open()}>
+              <View style={{ width: widthToDp("31%") }}>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.village}</Text>
+              </View>
+
+              <Icon
+                name="chevron-down"
+                size={40}
+                style={{ marginLeft: widthToDp("42%") }}
+              />
+            </TouchableOpacity>
+            <RBSheet5
+              ref={ref => {
+                this.RBSheet5 = ref;
+              }}
+              height={heightToDp("20%")}
+              // openDuration={250}
+              customStyles={{
+                container: {
+                  justifyContent: "center",
+                  alignItems: "center",
+                  backgroundColor:'rgba(51,204,51,0.9)',
+                  borderRadius:30
+                }
+              }}
+            >
+              <TouchableOpacity onPress={() => this.villagePicker("CHATRA")}>
+              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>CHATRA</Text>
+              </TouchableOpacity>
+              <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+              
+            </RBSheet5>
+          </View>
+          <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
+          <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
             <FloatingLabel
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
-            // onBlur={this.onBlur}
-            >GRAMPANCHAYAT</FloatingLabel>
-          </View> */}
-          <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
-            <Picker
-              mode="dropdown"
-              itemStyle={{ fontSize: widthToDp('20%') }}
-              selectedValue={this.state.gram}
-              onValueChange={(value) => this.gramPicker(value)}
-              //selectedValue={this.state.language}
-              style={{ width: widthToDp("83%") }}
-            >
-              <Picker.Item label="Grampanchayat" value="java" />
-              <Picker.Item label="gram" value="gram" />
-            </Picker>
-          </View>
-          <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
-          {/* <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
-            <FloatingLabel
-              labelStyle={styles.labelInput}
-              inputStyle={styles.input}
-              style={styles.formInput}
-            // onBlur={this.onBlur}
-            >VILLAGE</FloatingLabel>
-          </View> */}
-          <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
-            <Picker
-              mode="dropdown"
-              itemStyle={{ fontSize: widthToDp('20%') }}
-              //selectedValue={this.state.language}
-              selectedValue={this.state.village}
-              onValueChange={(value) => this.villagePicker(value)}
-              style={{ width: widthToDp("83%") }}
-            >
-              <Picker.Item label="Village" value="java" />
-              <Picker.Item label="village" value="village" />
-            </Picker>
-          </View>
-          <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
-          <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
-            <FloatingLabel
-              labelStyle={styles.labelInput}
-              inputStyle={styles.input}
-              style={styles.formInput}
-              onChangeText={(text) => {this.setState({participantNumber:text})}}
+              onChangeText={(text) => { this.setState({ participantNumber: text }) }}
             // onBlur={this.onBlur}
             >PARTICIPANT NUMBER</FloatingLabel>
           </View>
-          <View style={{ marginTop: heightToDp("2.5%"), marginLeft: widthToDp("8%") }}>
-            <FloatingLabel
+          <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
+            {/* <FloatingLabel
               labelStyle={styles.labelInput}
               inputStyle={styles.input}
               style={styles.formInput}
             // onBlur={this.onBlur}
-            >{this.state.deviceId}</FloatingLabel>
+            >{this.state.deviceId}</FloatingLabel> */}
+            <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.deviceId}</Text>
+            <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("1%") }}></View>
           </View>
           <View style={{ flexDirection: 'row', marginTop: heightToDp("5%"), marginLeft: widthToDp("4%") }}>
-            <Radio
+          {/* <RadioForm
+          formHorizontal={true}
+          radio_props={radio_props}
+          initial={1}
+          animation={true}
+          onPress={(value) => {this.setState({value:value})}}
+          buttonColor="#000" 
+        /> */}
+        <RadioForm
+        formHorizontal={true}
+        animation={true}
+        
+        >
+          {
+            radio_props.map((obj,i) => (
+              <RadioButton
+              labelHorizontal={true} key={i}
+              
+              >
+                <RadioButtonInput
+                obj={obj}
+                index={i}
+                isSelected={this.state.value === i}
+                onPress={(value) => this.checkStatus(value)}
+                buttonOuterColor={"#000"}
+                buttonStyle={{marginLeft:widthToDp("1%")}}
+                buttonWrapStyle={{marginLeft:widthToDp("5%")}}
+                />
+                <RadioButtonLabel
+                obj={obj}
+                index={i}
+                labelStyle={{fontFamily: 'Oswald-Medium',marginLeft:widthToDp("2%")}}
+                />
+              </RadioButton>
+            ))
+          }
+        </RadioForm>
+            {/* <Radio
               selected={false}
               style={{ marginLeft: widthToDp("3%"), marginTop: heightToDp("1%") }}
             />
@@ -367,8 +582,17 @@ export default class RegistrationScreen extends Component {
               selected={true}
               style={{ marginLeft: widthToDp("20%"), marginTop: heightToDp("1%") }}
             />
-            <Text style={{ color: "#fff", marginTop: heightToDp("1%"), marginLeft: widthToDp("1%"), fontFamily: 'Oswald-Medium' }}>FIELD OFFICER PASSWORD</Text>
+            <Text style={{ color: "#fff", marginTop: heightToDp("1%"), marginLeft: widthToDp("1%"), fontFamily: 'Oswald-Medium' }}>FIELD OFFICER PASSWORD</Text> */}
           </View>
+          {
+            this.state.status ?<View style={{backgroundColor:'gray',width:widthToDp("30%"),alignSelf:'center',marginTop: heightToDp("3%"),borderRadius:20}}>
+            <Input
+            style={{marginLeft:widthToDp("2%")}}
+            onChangeText={(text) => this.setState({fieldOfficerPass:text})}
+            />
+          </View> : null
+          }
+          
           <TouchableOpacity onPress={() => this.signup()}>
             <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("5%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
               <Text style={{ alignSelf: 'center', marginTop: heightToDp("0.5%"), fontWeight: '500', fontSize: widthToDp("5%"), fontFamily: 'Oswald-Medium' }}>SIGN UP</Text>

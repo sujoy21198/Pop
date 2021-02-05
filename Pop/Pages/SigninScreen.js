@@ -7,6 +7,7 @@ import Logo from '../assets/Logo'
 import Icon from 'react-native-vector-icons/AntDesign'
 import FloatingLabel from 'react-native-floating-labels'
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scroll-view'
+import RBSheet from "react-native-raw-bottom-sheet"
 
 export default class SigninScreen extends Component {
     render() {
@@ -69,10 +70,25 @@ export default class SigninScreen extends Component {
 
                 <View style={{ borderBottomColor: BaseColor.Stroke, borderBottomWidth: 1, marginTop: heightToDp('1.5%'), width: widthToDp("100%")}}></View>
 
-                <TouchableOpacity onPress={() => this.props.navigation.navigate('DashBoardScreen')}>
+                <TouchableOpacity>
                     <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("3%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
                         <Text style={{ alignSelf: 'center', marginTop: heightToDp("0.4%"), fontWeight: '500', fontSize: widthToDp("5%"),fontFamily:'Oswald-Medium' }}>GUEST SIGN IN</Text>
                     </View>
+                    {/* <RBSheet
+                    ref={ref => {
+                        this.RBSheet = ref;
+                      }}
+                      height={300}
+                      openDuration={250}
+                      customStyles={{
+                        container: {
+                          justifyContent: "center",
+                          alignItems: "center"
+                        }
+                      }}
+                    >
+                        <Text>hi</Text>
+                    </RBSheet> */}
                 </TouchableOpacity>
             </View>
             </KeyboardAwareScrollView>
