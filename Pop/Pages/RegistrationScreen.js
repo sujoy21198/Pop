@@ -17,7 +17,7 @@ import RBSheet3 from "react-native-raw-bottom-sheet"
 import RBSheet4 from "react-native-raw-bottom-sheet"
 import RBSheet5 from "react-native-raw-bottom-sheet"
 import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
-
+import DataAccess from '../Core/DataAccess'
 
 const radio_props = [
     {label: 'OTP' , value:0},
@@ -96,7 +96,7 @@ export default class RegistrationScreen extends Component {
     // }).catch(function (error){
     //   console.log(error)
     // })
-    await axios.post('http://161.35.122.165:3020/api/v1/signup', {
+    await axios.post(DataAccess.BaseUrl+DataAccess.SignUp, {
       name: this.state.fullname,
       gender: this.state.genderPicker,
       dob: this.state.date,
