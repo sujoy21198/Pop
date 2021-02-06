@@ -304,7 +304,7 @@ export default class RegistrationScreen extends Component {
               onPress={() => this.check()}
             /> */}
             <DatePicker
-              androidMode='calendar'
+              androidMode='spinner'
               date={this.state.date}
               mode="date"
 
