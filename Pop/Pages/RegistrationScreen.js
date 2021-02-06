@@ -585,7 +585,7 @@ export default class RegistrationScreen extends Component {
             <Text style={{ color: "#fff", marginTop: heightToDp("1%"), marginLeft: widthToDp("1%"), fontFamily: 'Oswald-Medium' }}>FIELD OFFICER PASSWORD</Text> */}
           </View>
           {
-            this.state.status ?<View style={{backgroundColor:'gray',width:widthToDp("30%"),alignSelf:'center',marginTop: heightToDp("3%"),borderRadius:20}}>
+            this.state.status ?<View style={{backgroundColor:'#55b550',width:widthToDp("30%"),alignSelf:'center',marginTop: heightToDp("3%"),borderRadius:20}}>
             <Input
             style={{marginLeft:widthToDp("2%")}}
             onChangeText={(text) => this.setState({fieldOfficerPass:text})}
