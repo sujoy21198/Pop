@@ -9,7 +9,8 @@ const BaseColor = {
     Hindi: '#244f00',
     Ho: '#003c5a',
     Uridia: '#5b3100',
-    Santhali: '#5b1801'
+    Santhali: '#5b1801',
+    CommonTextColor: '#44546a'
 }
 
 export default BaseColor;

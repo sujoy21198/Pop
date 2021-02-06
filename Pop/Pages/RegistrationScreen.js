@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { View, StyleSheet, ScrollView, TouchableOpacity, PermissionsAndroid } from 'react-native'
-import { Text, Item, ListItem, Right, Left, Picker,Toast,Input } from 'native-base'
+import { Text, Item, ListItem, Right, Left, Picker, Toast, Input } from 'native-base'
 import { heightToDp, widthToDp } from '../Responsive';
 import BaseColor from '../Core/BaseTheme';
 import Logo from '../assets/Logo';
@@ -16,12 +16,13 @@ import RBSheet2 from "react-native-raw-bottom-sheet"
 import RBSheet3 from "react-native-raw-bottom-sheet"
 import RBSheet4 from "react-native-raw-bottom-sheet"
 import RBSheet5 from "react-native-raw-bottom-sheet"
-import RadioForm, {RadioButton, RadioButtonInput, RadioButtonLabel} from 'react-native-simple-radio-button'
+import RadioForm, { RadioButton, RadioButtonInput, RadioButtonLabel } from 'react-native-simple-radio-button'
 import DataAccess from '../Core/DataAccess'
+import CustomIndicator from '../Core/CustomIndicator'
 
 const radio_props = [
-    {label: 'OTP' , value:0},
-    {label:'FIELD OFFICER PASSWORD', value:1}
+  { label: 'OTP', value: 0 },
+  { label: 'FIELD OFFICER PASSWORD', value: 1 }
 ]
 
 export default class RegistrationScreen extends Component {
@@ -44,9 +45,10 @@ export default class RegistrationScreen extends Component {
       village: 'VILLAGE',
       participantNumber: '',
       fieldOfficerPass: '',
-      value:'',
-      status:'',
-      passwordVisibility:true
+      value: '',
+      status: '',
+      passwordVisibility: true,
+      isLoading: false
     }
   }
 
@@ -54,13 +56,13 @@ export default class RegistrationScreen extends Component {
     this.getDeviceId()
 
   }
-  
+
   checkStatus = (value) => {
-    this.setState({value:value})
-    if(value === 1){
-      this.setState({status:true})
-    }else{
-      this.setState({status:false})
+    this.setState({ value: value })
+    if (value === 1) {
+      this.setState({ status: true })
+    } else {
+      this.setState({ status: false })
     }
   }
 
@@ -72,23 +74,29 @@ export default class RegistrationScreen extends Component {
   signup = async () => {
 
     var name = this.state.fullname
-    if(this.state.age<12){
+    var redirect = false;
+    var load = true
+    this.setState({ isLoading: true })
+    if (this.state.age < 12) {
+      this.setState({ isLoading: false })
       return Toast.show({
-        text:"Age must be grater than 12",
-        duration:3000,
-        type:'danger'
+        text: "Age must be grater than 12",
+        duration: 3000,
+        type: 'danger'
       })
-    }else if(this.state.password != this.state.confirmPassword){
+    } else if (this.state.password != this.state.confirmPassword) {
+      this.setState({ isLoading: false })
       return Toast.show({
-        text:"Password doesn't match",
-        duration:3000,
-        type:'danger'
+        text: "Password doesn't match",
+        duration: 3000,
+        type: 'danger'
       })
-    }else if(this.state.phoneNumber.length != 10){
+    } else if (this.state.phoneNumber.length != 10) {
+      this.setState({ isLoading: false })
       return Toast.show({
-        text:"Phone number shoud consist of 10 digits",
-        duration:3000,
-        type:'danger'
+        text: "Phone number shoud consist of 10 digits",
+        duration: 3000,
+        type: 'danger'
       })
     }
     // await axios.get('http://127.0.0.1:3000/api/v1/token').then(function (response) {
@@ -96,7 +104,7 @@ export default class RegistrationScreen extends Component {
     // }).catch(function (error){
     //   console.log(error)
     // })
-    await axios.post(DataAccess.BaseUrl+DataAccess.SignUp, {
+    await axios.post(DataAccess.BaseUrl + DataAccess.SignUp, {
       name: this.state.fullname,
       gender: this.state.genderPicker,
       dob: this.state.date,
@@ -118,14 +126,40 @@ export default class RegistrationScreen extends Component {
     }).then(function (response) {
       console.log(response.data)
       // alert(response.data.msg)
-      Toast.show({
-        text: name +' '+ response.data.msg,
-        type:'success',
-        duration:3000
-      })
+      if (response.data.status === 1) {
+        console.log("yes")
+        redirect = true
+        Toast.show({
+          text: name + ' ' + response.data.msg,
+          type: 'success',
+          duration: 3000
+        })
+      } else {
+        load = false
+        Toast.show({
+          text: response.data.msg,
+          type: 'success',
+          duration: 3000
+        })
+      }
+
     }).catch(function (error) {
       console.log(error)
     })
+
+    if (load === false) {
+      this.setState({ isLoading: false })
+    }
+
+    if (redirect === true) {
+      // this.props.navigation.navigate({
+      //     name: 'DashBoardScreen'
+      // })
+      this.props.navigation.reset({
+        index: 0,
+        routes: [{ name: "SigninScreen" }]
+      });
+    }
   }
 
   ageCalculator = (date) => {
@@ -179,7 +213,7 @@ export default class RegistrationScreen extends Component {
     this.RBSheet5.close()
   }
 
-  
+
 
   FullName = (value) => {
     this.setState({
@@ -227,21 +261,21 @@ export default class RegistrationScreen extends Component {
                 container: {
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor:'rgba(51,204,51,0.9)',
-                  borderRadius:30
+                  backgroundColor: 'rgba(51,204,51,0.9)',
+                  borderRadius: 30
                 }
               }}
             >
               <TouchableOpacity onPress={() => this.genderPicker("MALE")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>MALE</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>MALE</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
               <TouchableOpacity onPress={() => this.genderPicker("FEMALE")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium',marginTop: heightToDp('3%') }}>FEMALE</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium', marginTop: heightToDp('3%') }}>FEMALE</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
               <TouchableOpacity onPress={() => this.genderPicker("NON-BINARY")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium',marginTop: heightToDp('3%') }}>NON-BINARY</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium', marginTop: heightToDp('3%') }}>NON-BINARY</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
             </RBSheet>
@@ -361,7 +395,7 @@ export default class RegistrationScreen extends Component {
             >CONFIRM PASSWORD</FloatingLabel>
           </View>
           <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
-          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet3.open()}>
+            <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet3.open()}>
               <View style={{ width: widthToDp("30%") }}>
                 <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.state}</Text>
               </View>
@@ -382,13 +416,13 @@ export default class RegistrationScreen extends Component {
                 container: {
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor:'rgba(51,204,51,0.9)',
-                  borderRadius:30
+                  backgroundColor: 'rgba(51,204,51,0.9)',
+                  borderRadius: 30
                 }
               }}
             >
               <TouchableOpacity onPress={() => this.statePicker("JHARKHAND")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>JHARKHAND</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>JHARKHAND</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
             </RBSheet3>
@@ -403,7 +437,7 @@ export default class RegistrationScreen extends Component {
             >DISTRICT</FloatingLabel>
           </View> */}
           <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
-          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet4.open()}>
+            <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet4.open()}>
               <View style={{ width: widthToDp("30%") }}>
                 <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.district}</Text>
               </View>
@@ -424,21 +458,21 @@ export default class RegistrationScreen extends Component {
                 container: {
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor:'rgba(51,204,51,0.9)',
-                  borderRadius:30
+                  backgroundColor: 'rgba(51,204,51,0.9)',
+                  borderRadius: 30
                 }
               }}
             >
               <TouchableOpacity onPress={() => this.districtPicker("BOKARO")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>BOKARO</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>BOKARO</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
             </RBSheet4>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
-    
+
           <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
-          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet2.open()}>
+            <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet2.open()}>
               <View style={{ width: widthToDp("31%") }}>
                 <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.gram}</Text>
               </View>
@@ -459,29 +493,29 @@ export default class RegistrationScreen extends Component {
                 container: {
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor:'rgba(51,204,51,0.9)',
-                  borderRadius:30
+                  backgroundColor: 'rgba(51,204,51,0.9)',
+                  borderRadius: 30
                 }
               }}
             >
               <TouchableOpacity onPress={() => this.gramPicker("JHARGRAM")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>JHARGRAM</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>JHARGRAM</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
               <TouchableOpacity onPress={() => this.gramPicker("LALGARH")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium',marginTop: heightToDp('3%') }}>LALGARH</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium', marginTop: heightToDp('3%') }}>LALGARH</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
               <TouchableOpacity onPress={() => this.gramPicker("BINPUR")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium',marginTop: heightToDp('3%') }}>BINPUR</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium', marginTop: heightToDp('3%') }}>BINPUR</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
             </RBSheet2>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
-          
+
           <View style={{ marginTop: heightToDp("5%"), marginLeft: widthToDp("8%") }}>
-          <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet5.open()}>
+            <TouchableOpacity style={{ flexDirection: 'row' }} onPress={() => this.RBSheet5.open()}>
               <View style={{ width: widthToDp("31%") }}>
                 <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>{this.state.village}</Text>
               </View>
@@ -502,16 +536,16 @@ export default class RegistrationScreen extends Component {
                 container: {
                   justifyContent: "center",
                   alignItems: "center",
-                  backgroundColor:'rgba(51,204,51,0.9)',
-                  borderRadius:30
+                  backgroundColor: 'rgba(51,204,51,0.9)',
+                  borderRadius: 30
                 }
               }}
             >
               <TouchableOpacity onPress={() => this.villagePicker("CHATRA")}>
-              <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>CHATRA</Text>
+                <Text style={{ fontSize: widthToDp("4.6%"), marginLeft: widthToDp("2%"), fontFamily: 'Oswald-Medium' }}>CHATRA</Text>
               </TouchableOpacity>
               <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
-              
+
             </RBSheet5>
           </View>
           <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("8.2%") }}></View>
@@ -535,7 +569,7 @@ export default class RegistrationScreen extends Component {
             <View style={{ borderBottomColor: 'black', borderBottomWidth: 1, marginTop: heightToDp('0.1%'), width: widthToDp("80%"), marginLeft: widthToDp("1%") }}></View>
           </View>
           <View style={{ flexDirection: 'row', marginTop: heightToDp("5%"), marginLeft: widthToDp("4%") }}>
-          {/* <RadioForm
+            {/* <RadioForm
           formHorizontal={true}
           radio_props={radio_props}
           initial={1}
@@ -543,35 +577,36 @@ export default class RegistrationScreen extends Component {
           onPress={(value) => {this.setState({value:value})}}
           buttonColor="#000" 
         /> */}
-        <RadioForm
-        formHorizontal={true}
-        animation={true}
-        
-        >
-          {
-            radio_props.map((obj,i) => (
-              <RadioButton
-              labelHorizontal={true} key={i}
-              
-              >
-                <RadioButtonInput
-                obj={obj}
-                index={i}
-                isSelected={this.state.value === i}
-                onPress={(value) => this.checkStatus(value)}
-                buttonOuterColor={"#000"}
-                buttonStyle={{marginLeft:widthToDp("1%")}}
-                buttonWrapStyle={{marginLeft:widthToDp("5%")}}
-                />
-                <RadioButtonLabel
-                obj={obj}
-                index={i}
-                labelStyle={{fontFamily: 'Oswald-Medium',marginLeft:widthToDp("2%")}}
-                />
-              </RadioButton>
-            ))
-          }
-        </RadioForm>
+            <RadioForm
+              formHorizontal={true}
+              animation={true}
+
+            >
+              {
+                radio_props.map((obj, i) => (
+                  <RadioButton
+                    labelHorizontal={true} key={i}
+
+                  >
+                    <RadioButtonInput
+                      obj={obj}
+                      index={i}
+                      isSelected={this.state.value === i}
+                      onPress={(value) => this.checkStatus(value)}
+                      buttonOuterColor={"#000"}
+                      buttonStyle={{ marginLeft: widthToDp("1%") }}
+                      buttonWrapStyle={{ marginLeft: widthToDp("5%") }}
+                    />
+                    <RadioButtonLabel
+                      obj={obj}
+                      index={i}
+                      onPress={() => { }}
+                      labelStyle={{ fontFamily: 'Oswald-Medium', marginLeft: widthToDp("2%") }}
+                    />
+                  </RadioButton>
+                ))
+              }
+            </RadioForm>
             {/* <Radio
               selected={false}
               style={{ marginLeft: widthToDp("3%"), marginTop: heightToDp("1%") }}
@@ -585,19 +620,22 @@ export default class RegistrationScreen extends Component {
             <Text style={{ color: "#fff", marginTop: heightToDp("1%"), marginLeft: widthToDp("1%"), fontFamily: 'Oswald-Medium' }}>FIELD OFFICER PASSWORD</Text> */}
           </View>
           {
-            this.state.status ?<View style={{backgroundColor:'#55b550',width:widthToDp("30%"),alignSelf:'center',marginTop: heightToDp("3%"),borderRadius:20}}>
-            <Input
-            style={{marginLeft:widthToDp("2%")}}
-            onChangeText={(text) => this.setState({fieldOfficerPass:text})}
-            />
-          </View> : null
+            this.state.status ? <View style={{ backgroundColor: '#55b550', width: widthToDp("30%"), alignSelf: 'center', marginTop: heightToDp("3%"), borderRadius: 20 }}>
+              <Input
+                style={{ marginLeft: widthToDp("2%") }}
+                onChangeText={(text) => this.setState({ fieldOfficerPass: text })}
+              />
+            </View> : null
           }
-          
+
           <TouchableOpacity onPress={() => this.signup()}>
             <View style={{ backgroundColor: BaseColor.SecondaryColor, marginTop: heightToDp("5%"), width: widthToDp("37%"), alignSelf: 'center', height: heightToDp("5%"), borderRadius: 100 }}>
               <Text style={{ alignSelf: 'center', marginTop: heightToDp("0.5%"), fontWeight: '500', fontSize: widthToDp("5%"), fontFamily: 'Oswald-Medium' }}>SIGN UP</Text>
             </View>
           </TouchableOpacity>
+          {
+            this.state.isLoading ? <CustomIndicator IsLoading={this.state.isLoading} /> : null
+          }
           <View style={{ flexDirection: 'row', marginTop: heightToDp("4%"), alignSelf: 'center' }}>
             <Text style={{ color: "#fff", fontFamily: 'Oswald-Medium' }}>You have an account?</Text>
             <TouchableOpacity >
